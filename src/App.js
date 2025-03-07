@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+// import './App.css';
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
+import { HomeAppBar } from "./components/homecomponents/HomeAppBar";
+import { HomeFooter } from "./components/homecomponents/HomeFooter";
+import { Home } from "./pages/home/Home";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const HomeLayout = () => {
+    return (
+      <div>
+        <HomeAppBar />
+        <Outlet />
+        <HomeFooter />
+      </div>
+    );
+  };
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <HomeLayout />,
+      children: [
+        { path: "/", element: <Home /> },
+        // { path: "/login", element: <Login /> },
+        // { path: "/signup/", element: <Signup /> },
+        // { path: "/activate", element: <Activate /> },
+        // { path: "/adminlogin", element: <AdminLogin /> },
+      ],
+    },
+  ])
+  return <RouterProvider router={router} />;;
 }
 
 export default App;
