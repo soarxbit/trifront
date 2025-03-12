@@ -1,5 +1,7 @@
 import React from "react";
 import { Button } from "primereact/button";
+import "./home.scss"
+import {Link} from "react-router-dom"
 export const Home = () => {
   return (
     <div className="home">
@@ -11,10 +13,64 @@ export const Home = () => {
           <p>Artificial Inteligence Based Robotic Trading platform</p>
         </div>
         <div className="quick flex gap-3 align-items-center w-full justify-content-center">
-          <Button label="Sign Up" size="small" />
-          <Button label="Login" size="small" />
+          <Link to="/signup"><Button label="Sign Up" icon="pi pi-user" size="small" /></Link>
+          <Link to="/login"><Button label="Login" icon="pi pi-sign-in" size="small" /></Link>
+        </div>
+      </div>
+      <div className="module">
+        <div className="modtitle">
+          Revolutionary Trading Platform with Exclusive Features
+        </div>
+        <div className="grid">
+          <div className="col-12 md:col-6 lg:col-6">
+            <div className="moduleitem">
+                <div className="left">
+                    <div className="moduletitle">Mobile Payment Make Easy</div>
+                    <div className="msg">Add new trending and rare artwork to your collection.</div>
+                </div>
+                <div className="right">
+                    <img src={window.location.origin + "/images/coinicon.png"} alt="" />
+                </div>
+            </div>
+          </div>
+          <div className="col-12 md:col-6 lg:col-6">
+          <div className="moduleitem">
+                <div className="left">
+                    <div className="moduletitle">Mobile Payment Make Easy</div>
+                    <div className="msg">Add new trending and rare artwork to your collection.</div>
+                </div>
+                <div className="right">
+                    <img src={window.location.origin + "/images/piggy.png"} alt="" />
+                </div>
+            </div>
+          </div>
+        </div>
+        <div className="grid">
+          <div className="col-12 md:col-6 lg:col-6">
+            <div className="moduleitem">
+                <div className="left">
+                    <div className="moduletitle">Mobile Payment Make Easy</div>
+                    <div className="msg">Add new trending and rare artwork to your collection.</div>
+                </div>
+                <div className="right">
+                    <img src={window.location.origin + "/images/lock.png"} alt="" />
+                </div>
+            </div>
+          </div>
+          <div className="col-12 md:col-6 lg:col-6">
+          <div className="moduleitem">
+                <div className="left">
+                    <div className="moduletitle">Mobile Payment Make Easy</div>
+                    <div className="msg">Add new trending and rare artwork to your collection.</div>
+                </div>
+                <div className="right">
+                    <img src={window.location.origin + "/images/lock.png"} alt="" />
+                </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    
   );
 };

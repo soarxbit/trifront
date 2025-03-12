@@ -1,0 +1,128 @@
+.home {
+    .hero {
+      padding: 20px;
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 40px 30px;
+        background: linear-gradient(
+            180deg,
+            #66ead093,
+            rgba(177, 252, 225, 0) 100%
+          );
+        //   url("../../images/hero_bg.png");
+        // background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.00) 100%);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 30px;
+        .heading {
+          font-weight: 700;
+          font-size: 56px;
+        }
+        .msg {
+          font-size: 48px;
+          font-weight: 700;
+          background: linear-gradient(0deg, #66ead093, rgb(254, 255, 255) 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        .quickaction {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 40px;
+          padding: 10px 10px;
+          .data {
+            display: flex;
+            border-radius: 10px;
+            padding: 10px;
+            background: linear-gradient(
+              180deg,
+              #66ead093,
+              rgba(177, 252, 225, 0) 100%
+            );
+            align-items: center;
+            justify-content: start;
+            
+            div {
+              font-weight: 600;
+              color: rgba(255, 255, 0, 0.815);
+            }
+          }
+        }
+      }
+  
+      $breakpoint-tablet: 900.1px;
+      @media (max-width: $breakpoint-tablet) {
+        padding: 5px;
+        .content {
+          padding: 10px 10px;
+          border-radius: 8px;
+          .msg {
+            font-size: 34px;
+          }
+          .quickaction {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .data{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    .tradingview-widget-copyright{
+      display: none !important;
+      width: 100% !important;
+      height: 400px !important;
+    }
+    .module {
+      padding: 30px 50px;
+      // text-align: center;
+      .modtitle {
+        padding: 0px 140px;
+        font-size: 44px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 60px;
+        background: linear-gradient(0deg, #66ead093, rgb(254, 255, 255) 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      .moduleitem {
+        display: flex;
+        align-items: center;
+        background: #0f101e;
+        border: 1px solid rgba(43 44 56 / 46%);
+        border-radius: 15px;
+        padding: 40px 30px;
+        margin-bottom: 30px;
+        justify-content: space-between;
+        .left{
+          .moduletitle{
+              color: #66ead0;
+              font-size: 28px;
+              font-weight: 700;
+              margin-bottom: 15px;
+          }
+          .msg{
+              font-size: 14px;
+          }
+        }
+      }
+      $breakpoint-tablet: 900.1px;
+      @media (max-width: $breakpoint-tablet) {
+          padding: 30px 10px;
+          .modtitle{
+              padding: 0px 14px;
+              font-size: 34px;
+          }
+      }
+    }
+  }
+  
