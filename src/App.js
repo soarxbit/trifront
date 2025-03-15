@@ -11,6 +11,7 @@ import { Login } from "./pages/home/Login";
 import { UserAppBar } from "./components/usercomponents/UserAppBar";
 import { UserFooter } from "./components/usercomponents/UserFooter";
 import { UserDashBoard } from "./pages/user/userdashboard/UserDashBoard";
+import { AdminLogin } from "./pages/home/AdminLogin";
 function App() {
   const HomeLayout = () => {
     return (
@@ -39,7 +40,7 @@ function App() {
         { path: "/login", element: <Login /> },
         { path: "/signup/", element: <Signup /> },
         // { path: "/activate", element: <Activate /> },
-        // { path: "/adminlogin", element: <AdminLogin /> },
+        { path: "/adminlogin", element: <AdminLogin /> },
       ],
     },
     {

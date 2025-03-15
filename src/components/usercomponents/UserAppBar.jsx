@@ -12,12 +12,12 @@ export const UserAppBar = () => {
   const btnRef2 = useRef(null);
   return (
     <>
-      <div className="homeappbar">
+      <div className="homeappbar bg-green-200">
         <div className="content">
           <Link to="/user/" style={{ textDecoration: "none", color: "#FFF" }}>
             <div className="brand">
               <img src={window.location.origin + "/images/tlogo.webp"} alt="" />
-              <div className="title">TRICONIX</div>
+              <div className="title text-teal-800">TRICONIX</div>
             </div>
           </Link>
           <div className="menu">

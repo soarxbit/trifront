@@ -28,7 +28,7 @@ export const Signup = () => {
         });
         setUserAdd(adrs[0]);
       }else{
-        alert("0")
+        // alert("0000")
       }
       const resp = await axios.get(
         url + "/getdepositaddress",
@@ -59,16 +59,16 @@ export const Signup = () => {
   });
   const formik = useFormik({
     initialValues: {
-      tranhash: "",
-      usdt: "",
-      sponsorid: "",
+      tranhash: "0xb4b493fcea68d97ccb1b3406bee22ee264cfcd13664fbc00bfe6b25a1b8d432d",
+      usdt: "50",
+      sponsorid: "100001",
     },
     validationSchema,
     onSubmit: async (values) => {
       let rnd = DateTime.now().toFormat('x');
       rnd = rnd.slice(7)
       rnd = (rnd.length < 6 ? rnd + "0": rnd)
-      setButtonDisabled(true);
+      setButtonDisabled(1);
       const resp = await axios.post(
         url + "/signupinit",
         {
@@ -106,6 +106,7 @@ export const Signup = () => {
           summary: "Error",
           detail: resp.data.error,
         });
+        setButtonDisabled(0);
       }
     },
   });
