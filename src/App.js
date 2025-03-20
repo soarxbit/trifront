@@ -12,6 +12,9 @@ import { UserAppBar } from "./components/usercomponents/UserAppBar";
 import { UserFooter } from "./components/usercomponents/UserFooter";
 import { UserDashBoard } from "./pages/user/userdashboard/UserDashBoard";
 import { AdminLogin } from "./pages/home/AdminLogin";
+import { AdminAppBar } from "./components/admcomponents/AdminAppBar";
+import { AdmFooter } from "./components/admcomponents/AdmFooter";
+import { AdmDashBoard } from "./pages/admin/admdashboard/AdmDashBoard";
 function App() {
   const HomeLayout = () => {
     return (
@@ -28,6 +31,15 @@ function App() {
         <UserAppBar />
         <Outlet />
         <UserFooter />
+      </div>
+    );
+  };
+  const AdminLayout = () => {
+    return (
+      <div>
+        <AdminAppBar />
+        <Outlet />
+        <AdmFooter />
       </div>
     );
   };
@@ -62,6 +74,24 @@ function App() {
         // { path: "/adminlogin", element: <AdminLogin /> },
       ],
     },
+    {
+      path:"/admin",
+      element: <AdminLayout />,
+      children:[
+        {path:"/admin/", element:<AdmDashBoard />},
+        // {path:"/admin/withdraw", element:<AdminWithdraw />},
+        // {path:"/admin/claimback", element:<AdminClaimBack />},
+        // {path:"/admin/changeaddress", element:<ChangeAddress />},
+        // {path:"/admin/changesponsor", element:<ChangeSponsor />},
+        // {path:"/admin/updaterank", element:<AdmUpdateRank />},
+        // {path:"/admin/updatesuperid", element:<UpdateSuperId />},
+        // {path:"/admin/monthly", element:<Monthly />},
+        // {path:"/admin/platinum", element:<AdmPlatinum />},
+        // {path:"/admin/diamond", element:<AdmDiamond />},
+        // {path:"/admin/crown", element:<Crown />},
+        // {path:"/admin/changedepositaddress", element:<ChangeDepAddr />},
+      ]
+    }
   ])
   return <RouterProvider router={router} />;;
 }
