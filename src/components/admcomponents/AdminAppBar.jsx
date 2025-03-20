@@ -8,6 +8,7 @@ import { Ripple } from "primereact/ripple";
 import { StyleClass } from "primereact/styleclass";
 import { Divider } from "primereact/divider";
 export const AdminAppBar = () => {
+  const btnRef2 = useRef(null);
   const [visible, setVisible] = useState(false);
   return (
     <>
@@ -109,7 +110,7 @@ export const AdminAppBar = () => {
                         <Ripple />
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a
                         href="/admin/changeaddress/"
                         style={{ textDecoration: "none" }}
@@ -130,8 +131,8 @@ export const AdminAppBar = () => {
                         <span className="font-medium">Change Sponsor</span>
                         <Ripple />
                       </a>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <a
                         href="/admin/updaterank/"
                         style={{ textDecoration: "none" }}
@@ -152,8 +153,8 @@ export const AdminAppBar = () => {
                         <span className="font-medium">Update Super Id</span>
                         <Ripple />
                       </a>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <a
                         href="/admin/changedepositaddress/"
                         style={{ textDecoration: "none" }}
@@ -163,80 +164,104 @@ export const AdminAppBar = () => {
                         <span className="font-medium">Change Deposit Addr</span>
                         <Ripple />
                       </a>
-                    </li>
-                    {/* <li>
-                          <StyleClass
-                            nodeRef={btnRef2}
-                            selector="@next"
-                            enterFromClassName="hidden"
-                            enterActiveClassName="slidedown"
-                            leaveToClassName="hidden"
-                            leaveActiveClassName="slideup"
+                    </li> */}
+                    <li>
+                      <StyleClass
+                        nodeRef={btnRef2}
+                        selector="@next"
+                        enterFromClassName="hidden"
+                        enterActiveClassName="slidedown"
+                        leaveToClassName="hidden"
+                        leaveActiveClassName="slideup"
+                      >
+                        <Link
+                          style={{ textDecoration: "none" }}
+                          ref={btnRef2}
+                          className="p-ripple bg-yellow-800 flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                        >
+                          <i className="pi pi-chart-line mr-2"></i>
+                          <span className="font-medium">Live Account</span>
+                          <i className="pi pi-chevron-down ml-auto mr-1"></i>
+                          <Ripple />
+                        </Link>
+                      </StyleClass>
+                      <ul className="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
+                        <li>
+                          <a
+                            href="/admin/liveaccountnew"
+                            style={{ textDecoration: "none" }}
+                            className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
                           >
-                            <Link
-                             style={{textDecoration:"none"}}
-                              ref={btnRef2}
-                              className="p-ripple bg-yellow-800 flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
-                            >
-                              <i className="pi pi-chart-line mr-2"></i>
-                              <span className="font-medium">Interection</span>
-                              <i className="pi pi-chevron-down ml-auto mr-1"></i>
-                              <Ripple />
-                            </Link>
-                          </StyleClass>
-                          <ul className="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
-                            <li>
-                              <a href="/user/intronew" style={{textDecoration:"none"}} className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                                <i className="pi pi-chart-line mr-2"></i>
-                                <span className="font-medium">Introduce New</span>
-                                <Ripple />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="/user/upgrade/" style={{textDecoration:"none"}} className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                                <i className="pi pi-chart-line mr-2"></i>
-                                <span className="font-medium">Upgrade</span>
-                                <Ripple />
-                              </a>
-                            </li>
-                          </ul>
-                        </li>
-                        <Divider />
-                        <li>
-                          <Link to="/user/messages/" style={{textDecoration:"none"}} className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                            <i className="pi pi-comments mr-2"></i>
-                            <span className="font-medium">Messages</span>
-                            <span
-                              className="inline-flex align-items-center justify-content-center ml-auto bg-green-500 text-0 border-circle"
-                              style={{ minWidth: "1.5rem", height: "1.5rem" }}
-                            >
-                              0
-                            </span>
-                            <Ripple />
-                          </Link>
-                        </li>
-                        <li>
-                          <a href="/user/incomedetails/" style={{textDecoration:"none"}} className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                            <i className="pi pi-wallet mr-2"></i>
-                            <span className="font-medium">Income Details</span>
+                            <i className="pi pi-chart-line mr-2"></i>
+                            <span className="font-medium">New Account</span>
                             <Ripple />
                           </a>
                         </li>
                         <li>
-                          <a href="/user/withdraw/" style={{textDecoration:"none"}} className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                            <i className="pi pi-wallet mr-2"></i>
-                            <span className="font-medium">Withdraw</span>
+                          <a
+                            href="/user/upgrade/"
+                            style={{ textDecoration: "none" }}
+                            className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          >
+                            <i className="pi pi-chart-line mr-2"></i>
+                            <span className="font-medium">List Account</span>
                             <Ripple />
                           </a>
                         </li>
-                        
-                        <li>
-                          <Link to="/user/settings/" style={{textDecoration:"none"}} className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                            <i className="pi pi-cog mr-2"></i>
-                            <span className="font-medium">Settings</span>
-                            <Ripple />
-                          </Link>
-                        </li> */}
+                      </ul>
+                    </li>
+                    <Divider />
+                    {/* <li>
+                      <Link
+                        to="/user/messages/"
+                        style={{ textDecoration: "none" }}
+                        className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                      >
+                        <i className="pi pi-comments mr-2"></i>
+                        <span className="font-medium">Messages</span>
+                        <span
+                          className="inline-flex align-items-center justify-content-center ml-auto bg-green-500 text-0 border-circle"
+                          style={{ minWidth: "1.5rem", height: "1.5rem" }}
+                        >
+                          0
+                        </span>
+                        <Ripple />
+                      </Link>
+                    </li> */}
+                    {/* <li>
+                      <a
+                        href="/user/incomedetails/"
+                        style={{ textDecoration: "none" }}
+                        className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                      >
+                        <i className="pi pi-wallet mr-2"></i>
+                        <span className="font-medium">Income Details</span>
+                        <Ripple />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/user/withdraw/"
+                        style={{ textDecoration: "none" }}
+                        className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                      >
+                        <i className="pi pi-wallet mr-2"></i>
+                        <span className="font-medium">Withdraw</span>
+                        <Ripple />
+                      </a>
+                    </li> */}
+
+                    <li>
+                      <Link
+                        to="/user/settings/"
+                        style={{ textDecoration: "none" }}
+                        className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                      >
+                        <i className="pi pi-cog mr-2"></i>
+                        <span className="font-medium">Settings</span>
+                        <Ripple />
+                      </Link>
+                    </li>
                     <Divider />
                     <li>
                       <Link
