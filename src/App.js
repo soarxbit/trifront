@@ -16,6 +16,7 @@ import { AdminAppBar } from "./components/admcomponents/AdminAppBar";
 import { AdmFooter } from "./components/admcomponents/AdmFooter";
 import { AdmDashBoard } from "./pages/admin/admdashboard/AdmDashBoard";
 import { LiveAccountNew } from "./pages/admin/liveaccount/LiveAccountNew";
+import { LiveAccount } from "./pages/user/liveaccount/LiveAccount";
 function App() {
   const HomeLayout = () => {
     return (
@@ -61,6 +62,7 @@ function App() {
       element: <UserLayout />,
       children: [
         { path: "/user/", element: <UserDashBoard /> },
+        { path: "/user/liveaccount", element: <LiveAccount /> },
         // { path: "/user/liveaccountnew", element: <LiveAccountNew /> },
         // { path: "/user/myteam", element: <MyTeam /> },
         // { path: "/user/intronew", element: <IntroNew /> },

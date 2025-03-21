@@ -5,6 +5,7 @@ import axios from "axios";
 import { Message } from "primereact/message";
 import { Toast } from "primereact/toast";
 import { Button } from "primereact/button";
+import { Card } from "primereact/card";
 export const UserDashBoard = () => {
   const toast = useRef(null);
   const initialized = useRef(false);
@@ -66,10 +67,10 @@ export const UserDashBoard = () => {
           }
         );
         if (resp.status === 200) {
-          if(resp.data.userdata.is_active===1){
+          if (resp.data.userdata.is_active === 1) {
             setUserData(resp.data.userdata);
             setUserReward(_reward[resp.data.userdata.reward]);
-          }else{
+          } else {
             Navigate("/");
           }
         } else {
@@ -86,7 +87,7 @@ export const UserDashBoard = () => {
     }, 1000);
   }, []);
   const checkRank = async () => {
-    return false
+    return false;
     if (window.ethereum) {
       const adrs = await window.ethereum.request({
         method: "eth_requestAccounts",
@@ -117,11 +118,15 @@ export const UserDashBoard = () => {
         method: "eth_requestAccounts",
       });
       const wa = adrs[0];
-      const resp = await axios.post(url + "/user/checkreward", { wa },{
-        headers: {
-          "x-api-key": apikey,
-        },
-      });
+      const resp = await axios.post(
+        url + "/user/checkreward",
+        { wa },
+        {
+          headers: {
+            "x-api-key": apikey,
+          },
+        }
+      );
       if (resp.status === 200) {
         toast.current.show({
           severity: "success",
@@ -150,7 +155,9 @@ export const UserDashBoard = () => {
   };
   const content = (
     <div className="w-full flex align-items-center justify-content-between">
-      <div style={{ fontSize: "14px", color:"#000" }}>GLAD TO HAVE YOU BACK!!!</div>
+      <div style={{ fontSize: "14px", color: "#000" }}>
+        MY ID: {userdata.memberid}
+      </div>
     </div>
   );
   const usercont = (
@@ -181,7 +188,7 @@ export const UserDashBoard = () => {
   const tradefund = (
     <div className="w-full flex align-items-center justify-content-between">
       <div style={{ fontSize: "14px" }}>TEAM FEE FUND</div>
-      <div>{(userdata.tradefund*1).toFixed(3)}</div>
+      <div>{(userdata.tradefund * 1).toFixed(3)}</div>
     </div>
   );
   const myfund = (
@@ -200,9 +207,53 @@ export const UserDashBoard = () => {
     <div className="userdashboard">
       <Toast ref={toast} position="top-right" />
       <div className="hero">
+        <div className="content p-2">
+          <div className="grid">
+            <div className="col-12 md:col-6 lg:col-6 text-center">
+              <div className="data flex flex-column gap-2">
+                <div className="branding">
+                  <img
+                    src={window.location.origin + "/images/tlogo.webp"}
+                    alt="triconix"
+                    width={100}
+                  />
+                  <h3 className="m-0 p-0">WELCOME BACK TO</h3>
+                  <h1 className="m-0 p-0 text-primary text-4xl">TRICONIX</h1>
+                  <p>Artificial Inteligence Based Robotic Trading platform</p>
+                </div>
+                <Message
+                  style={{
+                    border: "solid #696cff",
+                    borderWidth: "0 0 0 6px",
+                    color: "#696cff",
+                  }}
+                  className="border-primary w-full justify-content-start"
+                  severity="info"
+                  content={content}
+                />
+                <Message
+                  style={{
+                    border: "solid #696cff",
+                    borderWidth: "0 0 0 6px",
+                    color: "#696cff",
+                  }}
+                  className="border-primary w-full justify-content-start"
+                  severity="info"
+                  content={usercont}
+                />
+                <Card className="text-left p-0">
+                  <div className="p-card-body p-0">
+                    <div className="p-card-content p-2">Hi</div>
+                  </div>
+                </Card>
+              </div>
+            </div>
+            <div className="col-12 md:col-6 lg:col-6">Right</div>
+          </div>
+        </div>
+      </div>
+      {/* <div className="hero">
         <div className="content">
-          {/* <TradeVideData /> */}
-          
           <Message
             severity="warn"
             style={{
@@ -237,20 +288,6 @@ export const UserDashBoard = () => {
                   className="w-full"
                   style={{ color: "#fff" }}
                 />
-                {/* <div className="w-full border-1 border-dashed surface-border border-round p-2">
-                  <Message
-                    severity="info"
-                    content={botfund}
-                    className="w-full"
-                    style={{ color: "#fff" }}
-                  />
-                  <Message
-                    severity="warn"
-                    content={tradefund}
-                    className="w-full mt-1"
-                    style={{ color: "#fff" }}
-                  />
-                </div> */}
 
                 <div className="w-full border-1 border-dashed surface-border border-round p-2">
                   <Message
@@ -306,7 +343,7 @@ export const UserDashBoard = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
-  )
-}
+  );
+};
