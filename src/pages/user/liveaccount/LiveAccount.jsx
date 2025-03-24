@@ -10,6 +10,7 @@ import { Toast } from "primereact/toast";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { DateTime } from "luxon";
+import { Card } from "primereact/card";
 export const LiveAccount = () => {
   const toast = useRef(null);
   const url = process.env.REACT_APP_HOST_ADDR;
@@ -39,7 +40,7 @@ export const LiveAccount = () => {
         // alert("0000")
       }
     };
-    fetchData()
+    fetchData();
   }, [apikey, url]);
   const validationSchema = Yup.object({
     username: Yup.mixed().required("Invalid Value!!! Please Check."),
@@ -117,11 +118,19 @@ export const LiveAccount = () => {
       )
     );
   };
+  const transtatus = (data) => {
+      return (
+        <>
+        {data.approve_status===0?"Pending":"Success"}
+         
+        </>
+      );
+    };
   return (
     <div className="liveaccount">
       <Toast ref={toast} position="top-right" />
       <div className="hero">
-        <div className="content">
+        <div className="content p-2">
           <div className="grid">
             <div className="col-12 md:col-6 lg:col-6">
               <FormikProvider value={formik}>
@@ -262,38 +271,28 @@ export const LiveAccount = () => {
                         />
                       )}
                     </div>
-                    {/* <div className="component">
-                      <Message
-                        severity="info"
-                        text="Submit USDT in Receive Link and obtain transaction hash"
-                        style={{ justifyContent: "left", marginBottom: "10px" }}
-                      />
-                      <Message
-                        severity="info"
-                        text="Provide transaction has and deposited amount press submit"
-                        style={{ justifyContent: "left" }}
-                      />
-                    </div> */}
+                    
                   </div>
                 </Form>
               </FormikProvider>
             </div>
             <div className="col-12 md:col-6 lg:col-6">
-              <DataTable value={livelist}>
-                {/* <Column body={custDate} header="Date"></Column> */}
-                {/* <Column field="memberid" header="Mem Id"></Column>
-                <Column field="mobile" header="Mobile"></Column>
-                <Column field="username" header="User Name"></Column> */}
-                <Column field="portalid" header="Portal Id"></Column>
-                {/* <Column field="portalpassword" header="Portal Pass"></Column> */}
-                <Column field="mtid" header="MTID"></Column>
-                {/* <Column field="mtpass" header="MTPass"></Column> */}
-                {/* <Column field="mtserver" header="Server"></Column> */}
-                {/* <Column body={custDate1} header="Date"></Column> */}
-                <Column field="investamt" header="Amount"></Column>
-                {/* <Column body={approve} header="Approve"></Column>
-                          <Column body={reject} header="Reject"></Column> */}
-              </DataTable>
+              <Card>
+                <div className="p-card-body p-0">
+                  <div className="p-card-content p-0">
+                    <DataTable value={livelist}>
+                     
+                      <Column field="portalid" header="Portal Id"></Column>
+                      
+                      <Column field="mtid" header="MTID"></Column>
+                      
+                      
+                      <Column field="investamt" header="Amount"></Column>
+                      <Column body={transtatus} header="Status"></Column>
+                    </DataTable>
+                  </div>
+                </div>
+              </Card>
             </div>
           </div>
         </div>

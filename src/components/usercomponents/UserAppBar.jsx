@@ -84,7 +84,7 @@ export const UserAppBar = () => {
                 ></Button>
               </span>
             </div>
-            <Divider />
+            {/* <Divider /> */}
             <div className="overflow-y-auto">
               <ul className="list-none p-3 m-0">
                 <li>
@@ -185,8 +185,8 @@ export const UserAppBar = () => {
                         </li>
                       </ul>
                     </li>
-                    <Divider />
-                    <li>
+                    {/* <Divider /> */}
+                    {/* <li>
                       <Link
                         to="/user/messages/"
                         style={{ textDecoration: "none" }}
@@ -202,7 +202,7 @@ export const UserAppBar = () => {
                         </span>
                         <Ripple />
                       </Link>
-                    </li>
+                    </li> */}
                     <li>
                       <a
                         href="/user/incomedetails/"
@@ -242,7 +242,7 @@ export const UserAppBar = () => {
                       <Link
                         to="/"
                         style={{ textDecoration: "none" }}
-                        className="p-ripple bg-red-800 flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                        className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
                       >
                         <i className="pi pi-power-off mr-2"></i>
                         <span className="font-medium">Log Out</span>

@@ -249,18 +249,18 @@ export const UserDashBoard = () => {
                   content={usercont}
                 />
                 <div className="grid text-center">
-                  <div className="col-6 md:col-4">
+                  <div className="col-6 md:col-6">
                     <div className="cont border-dotted border-round">
                       <div className="text-primary">My Direct</div>
                       <div>{0}</div>
-                      <Link><Button
+                      <Link to="/user/myteam"><Button
                         label="Explore"
                         size="small"
                       /></Link>
                       
                     </div>
                   </div>
-                  <div className="col-6 md:col-4">
+                  <div className="col-6 md:col-6">
                     <div className="cont border-dotted border-round">
                       <div className="text-primary">My Business</div>
                       <div>{0}</div>
@@ -272,7 +272,7 @@ export const UserDashBoard = () => {
                       
                     </div>
                   </div>
-                  <div className="col-12 md:col-4">
+                  {/* <div className="col-12 md:col-4">
                     <div className="cont border-dotted border-round">
                       <div className="text-primary">Team Business</div>
                       <div>{0}</div>
@@ -283,7 +283,7 @@ export const UserDashBoard = () => {
                       /></Link>
                       
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

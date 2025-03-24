@@ -6,6 +6,7 @@ import { Column } from "primereact/column";
 import { DateTime } from "luxon";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
+import { Card } from "primereact/card";
 export const LiveAccountNew = () => {
   const toast = useRef(null);
   const url = process.env.REACT_APP_HOST_ADDR;
@@ -49,7 +50,8 @@ export const LiveAccountNew = () => {
     <div className="admliveaccount">
       <div className="hero">
         <div className="content p-2">
-          <DataTable value={withlist}>
+            <Card>
+            <DataTable value={withlist}>
             <Column body={custDate} header="Date"></Column>
             <Column field="memberid" header="Mem Id"></Column>
             <Column field="mobile" header="Mobile"></Column>
@@ -64,6 +66,8 @@ export const LiveAccountNew = () => {
             <Column body={approve} header="Approve"></Column>
             <Column body={reject} header="Reject"></Column>
           </DataTable>
+            </Card>
+          
         </div>
       </div>
     </div>

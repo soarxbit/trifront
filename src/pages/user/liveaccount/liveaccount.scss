@@ -1,20 +1,20 @@
-.liveaccount{
-    background: linear-gradient(180deg, #66ead093, rgba(177, 252, 225, 0) 100%),
+.liveaccount {
+  background: linear-gradient(180deg, #66ead093, rgba(177, 252, 225, 0) 100%),
     url("../../../images/hero_bg.png");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 60px 10px;
-    .hero{
-        .content{
-            .form-group{
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-                .component{
-                    display: flex;flex-direction: column;
-                }
-            }
+
+//   background-position: center center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+  .hero {
+    .content {
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        .component {
+          display: flex;
+          flex-direction: column;
         }
+      }
     }
+  }
 }
