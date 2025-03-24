@@ -11,70 +11,67 @@ import { Toast } from "primereact/toast";
 import { Dialog } from "primereact/dialog";
 import { DateTime } from "luxon";
 export const Signup = () => {
-    const toast = useRef(null);
+  const toast = useRef(null);
   const Navigate = useNavigate();
   const url = process.env.REACT_APP_HOST_ADDR;
   const apikey = process.env.REACT_APP_APIKEY;
   const initialized = useRef(false);
   const [visible, setVisible] = useState(false);
   const [isButtonDisabled, setButtonDisabled] = useState(0);
-  const [depositadd, setDepositAdd] = useState("")
-  const [useradd, setUserAdd] = useState("")
-  useEffect(()=>{
+  const [depositadd, setDepositAdd] = useState("");
+  const [useradd, setUserAdd] = useState("");
+  useEffect(() => {
     const fetchData = async () => {
-      if(window.ethereum){
+      if (window.ethereum) {
         const adrs = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
         setUserAdd(adrs[0]);
-      }else{
+      } else {
         // alert("0000")
       }
-      const resp = await axios.get(
-        url + "/getdepositaddress",
-        {
-          headers: {
-            "x-api-key": apikey,
-          },
-        }
-      );
-      if(resp.status===200){
-        setDepositAdd(resp.data.address)
+      const resp = await axios.get(url + "/getdepositaddress", {
+        headers: {
+          "x-api-key": apikey,
+        },
+      });
+      if (resp.status === 200) {
+        setDepositAdd(resp.data.address);
       }
-
-    }
+    };
     if (!initialized.current) {
       initialized.current = true;
       fetchData();
     }
-  },[apikey, url])
+  }, [apikey, url]);
   const validationSchema = Yup.object({
     tranhash: Yup.mixed("Invalid Transaction Hash!!! Please Check").required(
       "Invalid Value!!! Please Check."
     ),
-    usdt: Yup.number("Invalid Value!!! Please Check").required(
-      "Invalid Value!!! Please Check"
-    ).min(50,"Minimum should be 50 USDT "),
+    usdt: Yup.number("Invalid Value!!! Please Check")
+      .required("Invalid Value!!! Please Check")
+      .min(10, "Minimum should be 10 USDT "),
     sponsorid: Yup.number().required("Field can not be empty."),
   });
   const formik = useFormik({
     initialValues: {
-      tranhash: "0xb4b493fcea68d97ccb1b3406bee22ee264cfcd13664fbc00bfe6b25a1b8d432d",
+      tranhash:
+        "0xb4b493fcea68d97ccb1b3406bee22ee264cfcd13664fbc00bfe6b25a1b8d432d",
       usdt: "50",
       sponsorid: "100001",
     },
     validationSchema,
     onSubmit: async (values) => {
-      let rnd = DateTime.now().toFormat('x');
-      rnd = rnd.slice(7)
-      rnd = (rnd.length < 6 ? rnd + "0": rnd)
+      let rnd = DateTime.now().toFormat("x");
+      rnd = rnd.slice(7);
+      rnd = rnd.length < 6 ? rnd + "0" : rnd;
       setButtonDisabled(1);
       const resp = await axios.post(
         url + "/signupinit",
         {
           values,
           rnd,
-          useradd
+          useradd,
         },
         {
           headers: {
@@ -89,18 +86,18 @@ export const Signup = () => {
           detail: resp.data.success,
         });
         setTimeout(() => {
-          Navigate("/login")
+          Navigate("/login");
         }, 2000);
-      } else if(resp.status===202) {
+      } else if (resp.status === 202) {
         toast.current.show({
           severity: "error",
           summary: "Error",
           detail: resp.data.error,
         });
         setTimeout(() => {
-          Navigate("/login")
+          Navigate("/login");
         }, 2000);
-      }else{
+      } else {
         toast.current.show({
           severity: "error",
           summary: "Error",
@@ -129,9 +126,7 @@ export const Signup = () => {
   };
   const content = (
     <div className="w-full flex align-items-center justify-content-between">
-      <div style={{ fontSize: "11px" }}>
-        {depositadd}
-      </div>
+      <div style={{ fontSize: "11px" }}>{depositadd}</div>
       <div className="flex gap-2">
         <i
           className="pi pi-copy cursor-pointer"
@@ -146,9 +141,7 @@ export const Signup = () => {
   );
   const userdata = (
     <div className="w-full flex align-items-center justify-content-between">
-      <div style={{ fontSize: "12px" }}>
-        {useradd}
-      </div>
+      <div style={{ fontSize: "12px" }}>{useradd}</div>
     </div>
   );
   return (
@@ -238,7 +231,11 @@ export const Signup = () => {
                   {isButtonDisabled === 0 ? (
                     <Button severity="warning" type="submit" label="Confirm" />
                   ) : (
-                    <Button severity="warning" type="button" label="Confirming..." />
+                    <Button
+                      severity="warning"
+                      type="button"
+                      label="Confirming..."
+                    />
                   )}
                 </div>
                 <div className="component">
@@ -276,9 +273,9 @@ export const Signup = () => {
         <img
           src={window.location.origin + "/deposit.png"}
           alt=""
-          style={{width:"100%"}}
+          style={{ width: "100%" }}
         />
       </Dialog>
     </div>
-  )
-}
+  );
+};

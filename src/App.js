@@ -17,6 +17,8 @@ import { AdmFooter } from "./components/admcomponents/AdmFooter";
 import { AdmDashBoard } from "./pages/admin/admdashboard/AdmDashBoard";
 import { LiveAccountNew } from "./pages/admin/liveaccount/LiveAccountNew";
 import { LiveAccount } from "./pages/user/liveaccount/LiveAccount";
+import { MyBusiness } from "./pages/user/mybusiness/MyBusiness";
+import { IncomeDetails } from "./pages/user/incomedetails/IncomeDetails";
 function App() {
   const HomeLayout = () => {
     return (
@@ -63,12 +65,14 @@ function App() {
       children: [
         { path: "/user/", element: <UserDashBoard /> },
         { path: "/user/liveaccount", element: <LiveAccount /> },
+        { path: "/user/mybusiness", element: <MyBusiness /> },
+        { path: "/user/incomedetails", element: <IncomeDetails /> },
         // { path: "/user/liveaccountnew", element: <LiveAccountNew /> },
         // { path: "/user/myteam", element: <MyTeam /> },
         // { path: "/user/intronew", element: <IntroNew /> },
         // { path: "/user/upgrade", element: <Upgrade /> },
         // { path: "/user/messages", element: <Message /> },
-        // { path: "/user/incomedetails", element: <IncomeDetails /> },
+        
         // { path: "/user/withdraw", element: <Withdraw /> },
         // { path: "/user/settings", element: <Settings /> },
         // { path: "/user/incomes/:inctype", element: <Incomes /> },

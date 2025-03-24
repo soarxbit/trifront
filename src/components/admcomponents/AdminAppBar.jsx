@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 // import "./homeappbar.scss";
 import { Button } from "primereact/button";
 import { Link } from "react-router-dom";
@@ -7,12 +7,36 @@ import { Avatar } from "primereact/avatar";
 import { Ripple } from "primereact/ripple";
 import { StyleClass } from "primereact/styleclass";
 import { Divider } from "primereact/divider";
+import { InputSwitch } from "primereact/inputswitch";
+import { PrimeReactContext } from "primereact/api";
 export const AdminAppBar = () => {
-  const btnRef2 = useRef(null);
   const [visible, setVisible] = useState(false);
+  const btnRef2 = useRef(null);
+    const [checked, setChecked] = useState(false);
+    const [darkMode, setDarkMode] = useState(
+      JSON.parse(localStorage.getItem("darkMode")) || false
+    );
+    const { changeTheme } = useContext(PrimeReactContext);
+    const changeMyTheme = () => {
+      let currentTheme = darkMode === false ? "soho-light" : "soho-dark"
+      let newTheme = darkMode === false ?  "soho-dark" : "soho-light"
+      changeTheme(currentTheme, newTheme, 'app-theme', function(){
+        setDarkMode(!darkMode);
+        setChecked(!darkMode);
+        localStorage.setItem("darkMode", !darkMode);
+      })
+    };
+    useEffect(()=>{
+      let currentTheme = darkMode === true ? "soho-light" : "soho-dark"
+      let newTheme = darkMode === true ?  "soho-dark" : "soho-light"
+      changeTheme(currentTheme, newTheme, 'app-theme', function(){
+        // setDarkMode(!darkMode);
+        // localStorage.setItem("darkMode", !darkMode);
+      })
+    },[darkMode, changeTheme])
   return (
     <>
-      <div className="homeappbar">
+      <div className="homeappbar surface-ground">
         <div className="content">
           <Link to="/admin/" style={{ textDecoration: "none", color: "#FFF" }}>
             <div className="brand">
@@ -21,19 +45,7 @@ export const AdminAppBar = () => {
             </div>
           </Link>
           <div className="menu">
-            <Link to="/">
-              <Button
-                className="btnlogin"
-                icon="pi pi-power-off"
-                size="small"
-                style={{
-                  backgroundColor: "#990000",
-                  borderColor: "#990000",
-                  color: "#fff",
-                }}
-                rounded
-              />
-            </Link>
+            <InputSwitch checked={checked} onChange={() => changeMyTheme()} />
             <Button
               type="button"
               icon="pi pi-align-center"

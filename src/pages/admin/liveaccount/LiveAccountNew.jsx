@@ -1,111 +1,69 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Card } from "primereact/card";
+import "./admliveaccount.scss";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import * as Yup from "yup";
-import { Form, FormikProvider, useFormik } from "formik";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { DateTime } from "luxon";
 import { Button } from "primereact/button";
-import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 export const LiveAccountNew = () => {
   const toast = useRef(null);
   const url = process.env.REACT_APP_HOST_ADDR;
   const apikey = process.env.REACT_APP_APIKEY;
-  const validationSchema = Yup.object({
-    username: Yup.mixed("Invalid Transaction Hash!!! Please Check").required(
-      "Invalid Value!!! Please Check."
-    ),
-    mobile: Yup.number("Invalid Data").required("Invalid Value!!! Please Check.").min(5555555555,"Invalid Value!!! Please Check.").max(9999999999,"Invalid Value!!! Please Check."),
-    portalid:Yup.mixed("Invalid Data Found").required("Invalid Data Found")
-  });
-  const formik = useFormik({
-    initialValues: {
-      username: "",
-      mobile:"",
-      portalid:""
-    },
-    validationSchema,
-    onSubmit: async (values) => {
-        console.log(values)
-      const resp = await axios.post(
-        url + "/admin/liveaccountnew",
-        {
-          values,
+  const [withlist, setWithList] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const resp = await axios.get(url + "/admin/fetchliveaccount", {
+        headers: {
+          "x-api-key": apikey,
         },
-        {
-          headers: {
-            "x-api-key": apikey,
-          },
-        }
-      );
-    },
-  });
-  const isFormFieldValid = (name) =>
-    !!(formik.touched[name] && formik.errors[name]);
-  const getFormErrorMessage = (name) => {
+      });
+      if (resp.status === 200) {
+        //   setBalance(resp.data.balance);
+        setWithList(resp.data.withdraws);
+      }
+    };
+    fetchData();
+  }, []);
+  const custDate = (data) => {
+    return <>{DateTime.fromISO(data.tran_date).toFormat("yyyy-mm-dd")}</>;
+  };
+  const custDate1 = (data) => {
+    return <>{DateTime.fromISO(data.investdate).toFormat("yyyy-mm-dd")}</>;
+  };
+  const approve = (data) => {
     return (
-      isFormFieldValid(name) && (
-        <small className="p-error">{formik.errors[name]}</small>
-      )
+      <>
+        <Button label="Approve" />
+      </>
+    );
+  };
+  const reject = (data) => {
+    return (
+      <>
+        <Button label="Reject" severity="danger" />
+      </>
     );
   };
   return (
-    <div className="liveaccountnew">
+    <div className="admliveaccount">
       <div className="hero">
         <div className="content p-2">
-          <div className="grid">
-            <div className="col-12 md:col-6 lg:col-6">
-              <Card>
-                <div className="p-card-body">
-                  <div className="p-card-content">
-                    <FormikProvider value={formik}>
-                      <Form onSubmit={formik.handleSubmit} autoComplete="off">
-                        <div className="form-group flex flex-column gap-3">
-                          <div className="component flex flex-column">
-                            <div>User Name</div>
-                            <InputText
-                              type="text"
-                              name="username"
-                              placeholder="User Name"
-                              autoFocus
-                              onChange={formik.handleChange}
-                              value={formik.values.username}
-                            />
-                            {getFormErrorMessage("username")}
-                          </div>
-                          <div className="component flex flex-column">
-                            <div>Mobile No</div>
-                            <InputText
-                              type="text"
-                              name="mobile"
-                              placeholder="User Mobile No"
-                              onChange={formik.handleChange}
-                              value={formik.values.mobile}
-                            />
-                            {getFormErrorMessage("mobile")}
-                          </div>
-                          <div className="component flex flex-column">
-                            <div>Portal Id</div>
-                            <InputText
-                              type="text"
-                              name="portalid"
-                              placeholder="User Mobile No"
-                              onChange={formik.handleChange}
-                              value={formik.values.portalid}
-                            />
-                            {getFormErrorMessage("portalid")}
-                          </div>
-                          <Button label="Submit" />
-                        </div>
-                      </Form>
-                    </FormikProvider>
-                  </div>
-                </div>
-              </Card>
-            </div>
-            <div className="col-12 md:col-6 lg:col-6">
-              List of Live Accounts
-            </div>
-          </div>
+          <DataTable value={withlist}>
+            <Column body={custDate} header="Date"></Column>
+            <Column field="memberid" header="Mem Id"></Column>
+            <Column field="mobile" header="Mobile"></Column>
+            <Column field="username" header="User Name"></Column>
+            <Column field="portalid" header="Portal Id"></Column>
+            <Column field="portalpassword" header="Portal Pass"></Column>
+            <Column field="mtid" header="MTID"></Column>
+            <Column field="mtpass" header="MTPass"></Column>
+            <Column field="mtserver" header="Server"></Column>
+            <Column body={custDate1} header="Date"></Column>
+            <Column field="investamt" header="Amount"></Column>
+            <Column body={approve} header="Approve"></Column>
+            <Column body={reject} header="Reject"></Column>
+          </DataTable>
         </div>
       </div>
     </div>

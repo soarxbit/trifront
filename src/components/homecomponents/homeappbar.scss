@@ -1,10 +1,14 @@
 .homeappbar{
     padding: 10px 50px;
+    position: fixed;
+    width: 100vw;
+    opacity: 0.7;
     // background: linear-gradient(90deg, #d0ea6670, rgb(242, 255, 0) 100%);
     .content{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        opacity: 1;
         .brand{
             display: flex;
             justify-content: space-between;

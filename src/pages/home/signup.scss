@@ -1,54 +1,45 @@
-.signup{
-    .hero{
-        padding: 20px;
-        .content{
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding: 40px 30px;
-            background: linear-gradient(
-                180deg,
-                #66ead093,
-                rgba(177, 252, 225, 0) 100%
-              );
-            //   url("../../images/hero_bg.png");
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            border-radius: 30px;
-            .heading {
-                display: flex;
-                flex-direction: column;
-                font-weight: 700;
-                font-size: 56px;
-              }
-            .form-group{
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                .component{
-                    display: flex;
-                    flex-direction: column;
-                }
-            }
-            .signuplog{
-                color: aquamarine;
-                a{
-                    text-decoration: none;
-                    color: aquamarine;
-                }
-            }
+.signup {
+  background: linear-gradient(180deg, #66ead093, rgba(177, 252, 225, 0) 100%),
+    url("../../images/hero_bg.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 60px 10px;
+  .hero {
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      .heading {
+        display: flex;
+        flex-direction: column;
+        font-weight: 700;
+        font-size: 56px;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .component {
+          display: flex;
+          flex-direction: column;
         }
-    }
-    $breakpoint-tablet: 900.1px;
-    @media (max-width: $breakpoint-tablet) {
-        .hero{
-            padding: 10px;
-            .content{
-                border-radius: 8px;
-                padding: 10px;
-            }
+      }
+      .signuplog {
+        color: aquamarine;
+        a {
+          text-decoration: none;
+          color: aquamarine;
         }
+      }
     }
-
+  }
+  $breakpoint-tablet: 900.1px;
+  @media (max-width: $breakpoint-tablet) {
+    .hero {
+      .content {
+        border-radius: 8px;
+      }
+    }
+  }
 }

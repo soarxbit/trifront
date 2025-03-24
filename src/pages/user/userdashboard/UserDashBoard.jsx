@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./userdashboard.scss";
 import axios from "axios";
 import { Message } from "primereact/message";
@@ -50,6 +50,13 @@ export const UserDashBoard = () => {
     "REWARD-13",
     "REWARD-14",
   ];
+  const globalMessage = () =>{
+    toast.current.show({
+      severity: "error",
+      summary: "Sorry",
+      detail: "Something Went wrong!!!",
+    });
+  }
   useEffect(() => {
     const fetchData = async () => {
       if (window.ethereum) {
@@ -241,14 +248,92 @@ export const UserDashBoard = () => {
                   severity="info"
                   content={usercont}
                 />
-                <Card className="text-left p-0">
-                  <div className="p-card-body p-0">
-                    <div className="p-card-content p-2">Hi</div>
+                <div className="grid text-center">
+                  <div className="col-6 md:col-4">
+                    <div className="cont border-dotted border-round">
+                      <div className="text-primary">My Direct</div>
+                      <div>{0}</div>
+                      <Link><Button
+                        label="Explore"
+                        size="small"
+                      /></Link>
+                      
+                    </div>
                   </div>
-                </Card>
+                  <div className="col-6 md:col-4">
+                    <div className="cont border-dotted border-round">
+                      <div className="text-primary">My Business</div>
+                      <div>{0}</div>
+                      <Link to="/user/mybusiness"><Button
+                        label="Explore"
+                        severity="info"
+                        size="small"
+                      /></Link>
+                      
+                    </div>
+                  </div>
+                  <div className="col-12 md:col-4">
+                    <div className="cont border-dotted border-round">
+                      <div className="text-primary">Team Business</div>
+                      <div>{0}</div>
+                      <Link><Button
+                        label="Explore"
+                        severity="danger"
+                        size="small"
+                      /></Link>
+                      
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="col-12 md:col-6 lg:col-6">Right</div>
+            <div className="col-12 md:col-6 lg:col-6">
+              <Card>
+                <div className="grid text-center">
+                  <div className="col-6 md:col-4">
+                    <div className="cont border-dotted border-round">
+                      <div className="text-primary">Active Rank</div>
+                      <div>No Rank</div>
+                      <Link><Button
+                        icon="pi pi-check-circle"
+                        label="Check"
+                        size="small"
+                        onClick={()=>globalMessage()}
+                      /></Link>
+                      
+                    </div>
+                  </div>
+                  <div className="col-6 md:col-4">
+                    <div className="cont border-dotted border-round">
+                      <div className="text-primary">Active Reward</div>
+                      <div>No Reward</div>
+                      <Link><Button
+                        icon="pi pi-check-circle"
+                        severity="info"
+                        label="Check"
+                        size="small"
+                        onClick={()=>globalMessage()}
+                      /></Link>
+                      
+                    </div>
+                  </div>
+                  <div className="col-12 md:col-4">
+                    <div className="cont border-dotted border-round">
+                      <div className="text-primary">Active Salary</div>
+                      <div>No Salary</div>
+                      <Link><Button
+                        icon="pi pi-check-circle"
+                        severity="danger"
+                        label="Check"
+                        size="small"
+                        onClick={()=>globalMessage()}
+                      /></Link>
+                      
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
           </div>
         </div>
       </div>
