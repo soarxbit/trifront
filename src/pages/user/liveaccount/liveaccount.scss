@@ -1,15 +1,13 @@
 .liveaccount {
   background: linear-gradient(180deg, #66ead093, rgba(177, 252, 225, 0) 100%),
     url("../../../images/hero_bg.png");
-
-//   background-position: center center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
   .hero {
+    padding: 80px 10px;
     .content {
       .form-group {
         display: flex;
         flex-direction: column;
+        gap: 15px;
         .component {
           display: flex;
           flex-direction: column;

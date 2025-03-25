@@ -46,6 +46,9 @@ export const LiveAccountNew = () => {
       </>
     );
   };
+  const portalid = (data) => {
+    return <div className="">{data.portalid}</div>;
+  };
   return (
     <div className="admliveaccount">
       <div className="hero">
@@ -54,9 +57,9 @@ export const LiveAccountNew = () => {
             <DataTable value={withlist}>
             <Column body={custDate} header="Date"></Column>
             <Column field="memberid" header="Mem Id"></Column>
-            <Column field="mobile" header="Mobile"></Column>
             <Column field="username" header="User Name"></Column>
-            <Column field="portalid" header="Portal Id"></Column>
+            <Column field="mobile" header="Mobile"></Column>
+            <Column body={portalid} header="Portal Id"></Column>
             <Column field="portalpassword" header="Portal Pass"></Column>
             <Column field="mtid" header="MTID"></Column>
             <Column field="mtpass" header="MTPass"></Column>

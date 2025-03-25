@@ -9,7 +9,6 @@ import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { DateTime } from "luxon";
 import { Card } from "primereact/card";
 export const LiveAccount = () => {
   const toast = useRef(null);
@@ -119,173 +118,164 @@ export const LiveAccount = () => {
     );
   };
   const transtatus = (data) => {
-      return (
-        <>
-        {data.approve_status===0?"Pending":"Success"}
-         
-        </>
-      );
-    };
+    return <>{data.approve_status === 0 ? "Pending" : "Success"}</>;
+  };
   return (
     <div className="liveaccount">
       <Toast ref={toast} position="top-right" />
       <div className="hero">
-        <div className="content p-2">
+        <div className="content">
           <div className="grid">
             <div className="col-12 md:col-6 lg:col-6">
-              <FormikProvider value={formik}>
-                <Form onSubmit={formik.handleSubmit} autoComplete="off">
-                  <div className="form-group">
-                    <img
-                      src={window.location.origin + "/wallet.png"}
-                      width="150"
-                      alt=""
-                    />
-                    <Message
-                      severity="info"
-                      text="NEW LIVE ACCOUNT"
-                      style={{ justifyContent: "left" }}
-                    />
+              <Card>
+                <FormikProvider value={formik}>
+                  <Form onSubmit={formik.handleSubmit} autoComplete="off">
+                    <div className="form-group">
+                      <Message
+                        severity="info"
+                        text="NEW LIVE ACCOUNT"
+                        style={{ justifyContent: "left" }}
+                      />
 
-                    <div className="component">
-                      <div>USER NAME</div>
-                      <InputText
-                        type="text"
-                        name="username"
-                        placeholder="User Name"
-                        className="p-inputtext-sm"
-                        autoFocus
-                        onChange={formik.handleChange}
-                        value={formik.values.username}
-                      />
-                      {getFormErrorMessage("username")}
-                    </div>
-                    <div className="component">
-                      <div>MOBILE</div>
-                      <InputText
-                        type="text"
-                        name="mobile"
-                        placeholder="Mobile"
-                        className="p-inputtext-sm"
-                        onChange={formik.handleChange}
-                        value={formik.values.mobile}
-                      />
-                      {getFormErrorMessage("mobile")}
-                    </div>
-                    <div className="component">
-                      <div>CLIENT PORTAL ID</div>
-                      <InputText
-                        type="text"
-                        name="portalid"
-                        placeholder="Portal Id"
-                        className="p-inputtext-sm"
-                        onChange={formik.handleChange}
-                        value={formik.values.portalid}
-                      />
-                      {getFormErrorMessage("portalid")}
-                    </div>
-                    <div className="component">
-                      <div>CLIENT PORTAL PASSWORD</div>
-                      <InputText
-                        type="text"
-                        name="portalpassword"
-                        placeholder="Portal Password"
-                        className="p-inputtext-sm"
-                        onChange={formik.handleChange}
-                        value={formik.values.portalpassword}
-                      />
-                      {getFormErrorMessage("portalpassword")}
-                    </div>
-                    <div className="component">
-                      <div>MT4/MT5 ID</div>
-                      <InputText
-                        type="text"
-                        name="mtid"
-                        placeholder="MT4/MT5 Id"
-                        className="p-inputtext-sm"
-                        onChange={formik.handleChange}
-                        value={formik.values.mtid}
-                      />
-                      {getFormErrorMessage("mtid")}
-                    </div>
-                    <div className="component">
-                      <div>MT4/MT5 PASSWORD</div>
-                      <InputText
-                        type="text"
-                        name="mtpass"
-                        placeholder="MT4/MT5 Password"
-                        className="p-inputtext-sm"
-                        onChange={formik.handleChange}
-                        value={formik.values.mtpass}
-                      />
-                      {getFormErrorMessage("mtpass")}
-                    </div>
-                    <div className="component">
-                      <div>MT4/MT5 SERVER</div>
-                      <InputText
-                        type="text"
-                        name="mtserver"
-                        placeholder="Server"
-                        className="p-inputtext-sm"
-                        onChange={formik.handleChange}
-                        value={formik.values.mtserver}
-                      />
-                      {getFormErrorMessage("mtserver")}
-                    </div>
-                    <div className="component">
-                      <div>INVESTMENT DATE</div>
-                      <InputText
-                        type="date"
-                        name="investdate"
-                        placeholder="Invest Dtae"
-                        className="p-inputtext-sm"
-                        onChange={formik.handleChange}
-                        value={formik.values.investdate}
-                      />
-                      {getFormErrorMessage("investdate")}
-                    </div>
-                    <div className="component">
-                      <div>INVEST AMOUNT</div>
-                      <InputText
-                        type="text"
-                        name="investamt"
-                        placeholder="Amount"
-                        className="p-inputtext-sm"
-                        onChange={formik.handleChange}
-                        value={formik.values.investamt}
-                      />
-                      {getFormErrorMessage("investamt")}
-                    </div>
-                    <div className="component">
-                      {isButtonDisabled === 0 ? (
-                        <Button
-                          severity="warning"
-                          type="submit"
-                          label="Confirm"
+                      <div className="component">
+                        <div>USER NAME</div>
+                        <InputText
+                          type="text"
+                          name="username"
+                          placeholder="User Name"
+                          className="p-inputtext-sm"
+                          autoFocus
+                          onChange={formik.handleChange}
+                          value={formik.values.username}
                         />
-                      ) : (
-                        <Button
-                          severity="warning"
-                          type="button"
-                          label="Confirming..."
+                        {getFormErrorMessage("username")}
+                      </div>
+                      <div className="component">
+                        <div>MOBILE</div>
+                        <InputText
+                          type="text"
+                          name="mobile"
+                          placeholder="Mobile"
+                          className="p-inputtext-sm"
+                          onChange={formik.handleChange}
+                          value={formik.values.mobile}
                         />
-                      )}
+                        {getFormErrorMessage("mobile")}
+                      </div>
+                      <div className="component">
+                        <div>CLIENT PORTAL ID</div>
+                        <InputText
+                          type="text"
+                          name="portalid"
+                          placeholder="Portal Id"
+                          className="p-inputtext-sm"
+                          onChange={formik.handleChange}
+                          value={formik.values.portalid}
+                        />
+                        {getFormErrorMessage("portalid")}
+                      </div>
+
+                      <div className="component">
+                        <div>CLIENT PORTAL PASSWORD</div>
+                        <InputText
+                          type="text"
+                          name="portalpassword"
+                          placeholder="Portal Password"
+                          className="p-inputtext-sm"
+                          onChange={formik.handleChange}
+                          value={formik.values.portalpassword}
+                        />
+                        {getFormErrorMessage("portalpassword")}
+                      </div>
+                      <div className="component">
+                        <div>MT4 ID</div>
+                        <InputText
+                          type="text"
+                          name="mtid"
+                          placeholder="MT4 Id"
+                          className="p-inputtext-sm"
+                          onChange={formik.handleChange}
+                          value={formik.values.mtid}
+                        />
+                        {getFormErrorMessage("mtid")}
+                      </div>
+                      <div className="component">
+                        <div>MT4 PASSWORD</div>
+                        <InputText
+                          type="text"
+                          name="mtpass"
+                          placeholder="MT4 Password"
+                          className="p-inputtext-sm"
+                          onChange={formik.handleChange}
+                          value={formik.values.mtpass}
+                        />
+                        {getFormErrorMessage("mtpass")}
+                      </div>
+                      <div className="component">
+                        <div>MT4 SERVER</div>
+                        <InputText
+                          type="text"
+                          name="mtserver"
+                          placeholder="Server"
+                          className="p-inputtext-sm"
+                          onChange={formik.handleChange}
+                          value={formik.values.mtserver}
+                        />
+                        {getFormErrorMessage("mtserver")}
+                      </div>
+                      <div className="component">
+                        <div>INVESTMENT DATE</div>
+                        <InputText
+                          type="date"
+                          name="investdate"
+                          placeholder="Invest Dtae"
+                          className="p-inputtext-sm"
+                          onChange={formik.handleChange}
+                          value={formik.values.investdate}
+                        />
+                        {getFormErrorMessage("investdate")}
+                      </div>
+                      <div className="component">
+                        <div>INVEST AMOUNT</div>
+                        <InputText
+                          type="text"
+                          name="investamt"
+                          placeholder="Amount"
+                          className="p-inputtext-sm"
+                          onChange={formik.handleChange}
+                          value={formik.values.investamt}
+                        />
+                        {getFormErrorMessage("investamt")}
+                      </div>
+                      <div className="component">
+                        {isButtonDisabled === 0 ? (
+                          <Button
+                            severity="warning"
+                            type="submit"
+                            label="Confirm"
+                          />
+                        ) : (
+                          <Button
+                            severity="warning"
+                            type="button"
+                            label="Confirming..."
+                          />
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </Form>
-              </FormikProvider>
+                  </Form>
+                </FormikProvider>
+              </Card>
             </div>
             <div className="col-12 md:col-6 lg:col-6">
               <Card>
                 <div className="p-card-body p-0">
                   <div className="p-card-content p-0">
                     <DataTable value={livelist}>
-                     
                       <Column field="portalid" header="Portal Id"></Column>
-                      
+
                       <Column field="mtid" header="MTID"></Column>
-                      
-                      
+
                       <Column field="investamt" header="Amount"></Column>
                       <Column body={transtatus} header="Status"></Column>
                     </DataTable>
