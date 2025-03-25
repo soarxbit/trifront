@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./signup.scss";
 import { Message } from "primereact/message";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import * as Yup from "yup";
 import { Form, FormikProvider, useFormik } from "formik";

@@ -173,7 +173,7 @@ export const LiveAccount = () => {
                       {getFormErrorMessage("mobile")}
                     </div>
                     <div className="component">
-                      <div>PORTAL ID</div>
+                      <div>CLIENT PORTAL ID</div>
                       <InputText
                         type="text"
                         name="portalid"
@@ -185,7 +185,7 @@ export const LiveAccount = () => {
                       {getFormErrorMessage("portalid")}
                     </div>
                     <div className="component">
-                      <div>PORTAL PASSWORD</div>
+                      <div>CLIENT PORTAL PASSWORD</div>
                       <InputText
                         type="text"
                         name="portalpassword"
@@ -271,7 +271,6 @@ export const LiveAccount = () => {
                         />
                       )}
                     </div>
-                    
                   </div>
                 </Form>
               </FormikProvider>

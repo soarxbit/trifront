@@ -248,11 +248,21 @@ export const UserDashBoard = () => {
                   severity="info"
                   content={usercont}
                 />
+                <Message
+                  style={{
+                    border: "solid #696cff",
+                    borderWidth: "0 0 0 6px",
+                    color: "#696cff",
+                  }}
+                  className="border-primary w-full justify-content-start"
+                  severity="info"
+                  content={teamfund}
+                />
                 <div className="grid text-center">
                   <div className="col-6 md:col-6">
                     <div className="cont border-dotted border-round">
                       <div className="text-primary">My Direct</div>
-                      <div>{0}</div>
+                      <div>{userdata.mydown}</div>
                       <Link to="/user/myteam"><Button
                         label="Explore"
                         size="small"
@@ -262,8 +272,8 @@ export const UserDashBoard = () => {
                   </div>
                   <div className="col-6 md:col-6">
                     <div className="cont border-dotted border-round">
-                      <div className="text-primary">My Business</div>
-                      <div>{0}</div>
+                      <div className="text-primary">Self Business</div>
+                      <div>{userdata.myfund}</div>
                       <Link to="/user/mybusiness"><Button
                         label="Explore"
                         severity="info"
@@ -272,25 +282,7 @@ export const UserDashBoard = () => {
                       
                     </div>
                   </div>
-                  {/* <div className="col-12 md:col-4">
-                    <div className="cont border-dotted border-round">
-                      <div className="text-primary">Team Business</div>
-                      <div>{0}</div>
-                      <Link><Button
-                        label="Explore"
-                        severity="danger"
-                        size="small"
-                      /></Link>
-                      
-                    </div>
-                  </div> */}
-                </div>
-              </div>
-            </div>
-            <div className="col-12 md:col-6 lg:col-6">
-              <Card>
-                <div className="grid text-center">
-                  <div className="col-6 md:col-4">
+                  <div className="col-6 md:col-6">
                     <div className="cont border-dotted border-round">
                       <div className="text-primary">Active Rank</div>
                       <div>No Rank</div>
@@ -303,21 +295,7 @@ export const UserDashBoard = () => {
                       
                     </div>
                   </div>
-                  <div className="col-6 md:col-4">
-                    <div className="cont border-dotted border-round">
-                      <div className="text-primary">Active Reward</div>
-                      <div>No Reward</div>
-                      <Link><Button
-                        icon="pi pi-check-circle"
-                        severity="info"
-                        label="Check"
-                        size="small"
-                        onClick={()=>globalMessage()}
-                      /></Link>
-                      
-                    </div>
-                  </div>
-                  <div className="col-12 md:col-4">
+                  <div className="col-12 md:col-6">
                     <div className="cont border-dotted border-round">
                       <div className="text-primary">Active Salary</div>
                       <div>No Salary</div>
@@ -332,7 +310,10 @@ export const UserDashBoard = () => {
                     </div>
                   </div>
                 </div>
-              </Card>
+              </div>
+            </div>
+            <div className="col-12 md:col-6 lg:col-6">
+              
             </div>
           </div>
         </div>
