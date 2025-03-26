@@ -133,13 +133,6 @@ export const UserAppBar = () => {
                         <Ripple />
                       </a>
                     </li>
-                    {/* <li>
-                      <Link to="/user/myteam/" style={{textDecoration:"none"}} className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-900 hover:surface-200 transition-duration-150 transition-colors w-full">
-                        <i className="pi pi-users mr-2"></i>
-                        <span className="font-medium">Intigrate</span>
-                        <Ripple />
-                      </Link>
-                    </li> */}
                     <li>
                       <StyleClass
                         nodeRef={btnRef2}

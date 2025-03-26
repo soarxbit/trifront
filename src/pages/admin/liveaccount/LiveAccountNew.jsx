@@ -12,6 +12,7 @@ export const LiveAccountNew = () => {
   const url = process.env.REACT_APP_HOST_ADDR;
   const apikey = process.env.REACT_APP_APIKEY;
   const [withlist, setWithList] = useState([]);
+  const [rowid, setRowId] = useState("")
   useEffect(() => {
     const fetchData = async () => {
       const resp = await axios.get(url + "/admin/fetchliveaccount", {
@@ -32,10 +33,20 @@ export const LiveAccountNew = () => {
   const custDate1 = (data) => {
     return <>{DateTime.fromISO(data.investdate).toFormat("yyyy-mm-dd")}</>;
   };
+  const approveTran = async (_id) =>{
+    const resp = await axios.post(url + "/admin/approveliveaccount",{_id}, {
+      headers: {
+        "x-api-key": apikey,
+      },
+    });
+    if (resp.status === 200) {
+      window.location.reload(true)
+    }
+  }
   const approve = (data) => {
     return (
       <>
-        <Button label="Approve" />
+        <Button label="Approve" onClick={()=>approveTran(data._id)} />
       </>
     );
   };
