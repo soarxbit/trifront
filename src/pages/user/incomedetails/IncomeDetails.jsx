@@ -24,6 +24,7 @@ export const IncomeDetails = () => {
     REWARD:0,
     MONTHLY:0,
     MLEVEL:0,
+    REF:0
   });
   useEffect(()=>{
     const fetchData = async () => {
@@ -57,6 +58,8 @@ export const IncomeDetails = () => {
         setIncome(prevIncome => ({...prevIncome, MLEVEL: xdata[i].sum}))
       }else if(xdata[i]._id==='CROWN'){
         setIncome(prevIncome => ({...prevIncome, CROWN: xdata[i].sum}))
+      }else if(xdata[i]._id==='REF'){
+        setIncome(prevIncome => ({...prevIncome, REF: xdata[i].sum}))
       }
       // else if(xdata[i]._id=='VM'){
       //   setIncome(prevIncome => ({...prevIncome, VM: xdata[i].sum}))
@@ -94,7 +97,7 @@ export const IncomeDetails = () => {
           <div className="col-12">
             <div className="data1">
               <div className='font-bold'>TOTAL INCOME</div>
-              <div className="amt">{(income.FEE + income.REWARD + income.MONTHLY + income.MLEVEL + income.CROWN).toFixed(3)}</div>
+              <div className="amt">{(income.FEE + income.REF + income.MONTHLY + income.MLEVEL + income.CROWN).toFixed(3)}</div>
               <Button severity='warning' label='Details' size='small' onClick={()=>globalMessage()} />
             </div>
           </div>
@@ -121,7 +124,7 @@ export const IncomeDetails = () => {
           <div className="col-6">
           <div className="data">
               <div className='font-bold'>REF. BONUS</div>
-              <div className="amt">{(income.FEE).toFixed(3)}</div>
+              <div className="amt">{(income.REF).toFixed(3)}</div>
               <Button label='Details' size='small' onClick={()=>Navigate('/user/incomes/fee')} />
             </div>
           </div>
