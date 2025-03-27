@@ -131,7 +131,7 @@ export const IncomeDetails = () => {
           <div className="col-6">
           <div className="data">
               <div className='font-bold'>TRADE LEVEL</div>
-              <div className="amt">{(income.MLEVEL).toFixed(3)}</div>
+              <div className="amt">{(income.FEE).toFixed(3)}</div>
               <Button label='Details' size='small' onClick={()=>Navigate('/user/incomes/mlevel')} />
             </div>
           </div>
