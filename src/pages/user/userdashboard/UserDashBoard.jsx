@@ -226,7 +226,7 @@ export const UserDashBoard = () => {
                   />
                   <h3 className="m-0 p-0">WELCOME BACK TO</h3>
                   <h1 className="m-0 p-0 text-primary text-4xl">TRICONIX</h1>
-                  <p>Artificial Inteligence Based Robotic Trading platform</p>
+                  <p>Artificial Inteligence Based Trading platform</p>
                 </div>
                 <Message
                   style={{
@@ -259,17 +259,7 @@ export const UserDashBoard = () => {
                   content={teamfund}
                 />
                 <div className="grid text-center">
-                  <div className="col-6 md:col-6">
-                    <div className="cont border-dotted border-round">
-                      <div className="text-primary">My Direct</div>
-                      <div>{userdata.mydown}</div>
-                      <Link to="/user/myteam"><Button
-                        label="Explore"
-                        size="small"
-                      /></Link>
-                      
-                    </div>
-                  </div>
+                  
                   <div className="col-6 md:col-6">
                     <div className="cont border-dotted border-round">
                       <div className="text-primary">Self Business</div>
@@ -280,6 +270,16 @@ export const UserDashBoard = () => {
                         size="small"
                       /></Link>
                       
+                    </div>
+                  </div>
+                  <div className="col-6 md:col-6">
+                    <div className="cont border-dotted border-round">
+                      <div className="text-primary">My Direct</div>
+                      <div>{userdata.mydown}</div>
+                      <Link to="/user/myteam"><Button
+                        label="Explore"
+                        size="small"
+                      /></Link>
                     </div>
                   </div>
                   <div className="col-6 md:col-6">
@@ -295,7 +295,7 @@ export const UserDashBoard = () => {
                       
                     </div>
                   </div>
-                  <div className="col-12 md:col-6">
+                  <div className="col-6 md:col-6">
                     <div className="cont border-dotted border-round">
                       <div className="text-primary">Active Salary</div>
                       <div>No Salary</div>

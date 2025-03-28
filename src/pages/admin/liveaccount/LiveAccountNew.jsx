@@ -57,11 +57,37 @@ export const LiveAccountNew = () => {
       </>
     );
   };
-  const portalid = (data) => {
-    return <div className="">{data.portalid}</div>;
+  const mobile = (data) => {
+    return <a href={`tel:${data.mobile}`}>{data.mobile}</a>;
   };
+  const portalid = (data) => {
+    return <div className="cursor-pointer" onClick={()=>copyText(data.portalid)}>{data.portalid}</div>;
+  };
+  const portalpass = (data) => {
+    return <div className="cursor-pointer" onClick={()=>copyText(data.portalpassword)}>{data.portalpassword}</div>;
+  };
+  const mtid = (data) => {
+    return <div className="cursor-pointer" onClick={()=>copyText(data.mtid)}>{data.mtid}</div>;
+  };
+  const mtpass = (data) => {
+    return <div className="cursor-pointer" onClick={()=>copyText(data.mtpass)}>{data.mtpass}</div>;
+  };
+  const mtserver = (data) => {
+    return <div className="cursor-pointer" onClick={()=>copyText(data.mtserver)}>{data.mtserver}</div>;
+  };
+
+  const copyText = (x) => {
+    navigator.clipboard.writeText(x);
+    toast.current.show({
+      severity: "info",
+      summary: "Success",
+      detail: "Content Copied Successfully",
+    });
+  };
+
   return (
     <div className="admliveaccount">
+      <Toast ref={toast} position="top-right" />
       <div className="hero">
         <div className="content p-2">
             <Card>
@@ -69,12 +95,12 @@ export const LiveAccountNew = () => {
             <Column body={custDate} header="Date"></Column>
             <Column field="memberid" header="Mem Id"></Column>
             <Column field="username" header="User Name"></Column>
-            <Column field="mobile" header="Mobile"></Column>
+            <Column body={mobile} header="Mobile"></Column>
             <Column body={portalid} header="Portal Id"></Column>
-            <Column field="portalpassword" header="Portal Pass"></Column>
-            <Column field="mtid" header="MTID"></Column>
-            <Column field="mtpass" header="MTPass"></Column>
-            <Column field="mtserver" header="Server"></Column>
+            <Column body={portalpass} header="Portal Pass"></Column>
+            <Column body={mtid} header="MTID"></Column>
+            <Column body={mtpass} header="MTPass"></Column>
+            <Column body={mtserver} header="Server"></Column>
             <Column body={custDate1} header="Date"></Column>
             <Column field="investamt" header="Amount"></Column>
             <Column body={approve} header="Approve"></Column>
