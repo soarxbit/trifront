@@ -12,6 +12,7 @@ import { PrimeReactContext } from "primereact/api";
 export const UserAppBar = () => {
   const [visible, setVisible] = useState(false);
   const btnRef2 = useRef(null);
+  const btnRef3 = useRef(null);
   const [checked, setChecked] = useState(false);
   const [darkMode, setDarkMode] = useState(
     JSON.parse(localStorage.getItem("darkMode")) || false
@@ -101,6 +102,119 @@ export const UserAppBar = () => {
                       </a>
                     </li>
                     <li>
+                      <StyleClass
+                        nodeRef={btnRef2}
+                        selector="@next"
+                        enterFromClassName="hidden"
+                        enterActiveClassName="slidedown"
+                        leaveToClassName="hidden"
+                        leaveActiveClassName="slideup"
+                      >
+                        <a href="#jav"
+                          style={{ textDecoration: "none" }}
+                          ref={btnRef2}
+                          className="p-ripple bg-yellow-100 flex align-items-center cursor-pointer p-3 border-round text-primary hover:surface-200 transition-duration-150 transition-colors w-full"
+                        >
+                          <i className="pi pi-chart-line mr-2"></i>
+                          <span className="font-medium">My Business</span>
+                          <i className="pi pi-chevron-down ml-auto mr-1"></i>
+                          <Ripple />
+                        </a>
+                      </StyleClass>
+                      <ul className="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
+                        <li>
+                          <a
+                            href="/user/mybusiness/"
+                            style={{ textDecoration: "none" }}
+                            className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          >
+                            <i className="pi pi-chart-line mr-2"></i>
+                            <span className="font-medium">Hach Fund</span>
+                            <Ripple />
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="/user/myliveaccount/"
+                            style={{ textDecoration: "none" }}
+                            className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          >
+                            <i className="pi pi-chart-line mr-2"></i>
+                            <span className="font-medium">Live Account</span>
+                            <Ripple />
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="/user/myrealstate/"
+                            style={{ textDecoration: "none" }}
+                            className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          >
+                            <i className="pi pi-chart-line mr-2"></i>
+                            <span className="font-medium">Real State</span>
+                            <Ripple />
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <Divider />
+                    <li>
+                      <StyleClass
+                        nodeRef={btnRef3}
+                        selector="@next"
+                        enterFromClassName="hidden"
+                        enterActiveClassName="slidedown"
+                        leaveToClassName="hidden"
+                        leaveActiveClassName="slideup"
+                      >
+                        <a href="#jav"
+                          style={{ textDecoration: "none" }}
+                          ref={btnRef3}
+                          className="p-ripple bg-yellow-100 flex align-items-center cursor-pointer p-3 border-round text-primary hover:surface-200 transition-duration-150 transition-colors w-full"
+                        >
+                          <i className="pi pi-chart-line mr-2"></i>
+                          <span className="font-medium">New Business</span>
+                          <i className="pi pi-chevron-down ml-auto mr-1"></i>
+                          <Ripple />
+                        </a>
+                      </StyleClass>
+                      <ul className="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
+                        <li>
+                          <a
+                            href="/user/liveaccount/"
+                            style={{ textDecoration: "none" }}
+                            className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          >
+                            <i className="pi pi-chart-line mr-2"></i>
+                            <span className="font-medium">Hach Fund</span>
+                            <Ripple />
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="/user/myliveaccount/"
+                            style={{ textDecoration: "none" }}
+                            className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          >
+                            <i className="pi pi-chart-line mr-2"></i>
+                            <span className="font-medium">Live Account</span>
+                            <Ripple />
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="/user/myrealstate/"
+                            style={{ textDecoration: "none" }}
+                            className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          >
+                            <i className="pi pi-chart-line mr-2"></i>
+                            <span className="font-medium">Real State</span>
+                            <Ripple />
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    {/* <li>
                       <a
                         href="/user/mybusiness/"
                         style={{ textDecoration: "none" }}
@@ -110,7 +224,19 @@ export const UserAppBar = () => {
                         <span className="font-medium">My Business</span>
                         <Ripple />
                       </a>
-                    </li>
+                    </li> */}
+                    
+                    {/* <li>
+                      <a
+                        href="/user/mylivefund/"
+                        style={{ textDecoration: "none" }}
+                        className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                      >
+                        <i className="pi pi-bookmark mr-2"></i>
+                        <span className="font-medium">My Live Fund</span>
+                        <Ripple />
+                      </a>
+                    </li> */}
                     <li>
                       <a
                         href="/user/myteam/"
@@ -122,7 +248,7 @@ export const UserAppBar = () => {
                         <Ripple />
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a
                         href="/user/liveaccount/"
                         style={{ textDecoration: "none" }}
@@ -132,52 +258,8 @@ export const UserAppBar = () => {
                         <span className="font-medium">Live Account</span>
                         <Ripple />
                       </a>
-                    </li>
-                    <li>
-                      <StyleClass
-                        nodeRef={btnRef2}
-                        selector="@next"
-                        enterFromClassName="hidden"
-                        enterActiveClassName="slidedown"
-                        leaveToClassName="hidden"
-                        leaveActiveClassName="slideup"
-                      >
-                        <Link
-                          style={{ textDecoration: "none" }}
-                          ref={btnRef2}
-                          className="p-ripple bg-yellow-800 flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
-                        >
-                          <i className="pi pi-chart-line mr-2"></i>
-                          <span className="font-medium">Interection</span>
-                          <i className="pi pi-chevron-down ml-auto mr-1"></i>
-                          <Ripple />
-                        </Link>
-                      </StyleClass>
-                      <ul className="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
-                        <li>
-                          <a
-                            href="/user/intronew"
-                            style={{ textDecoration: "none" }}
-                            className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
-                          >
-                            <i className="pi pi-chart-line mr-2"></i>
-                            <span className="font-medium">Introduce New</span>
-                            <Ripple />
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="/user/upgrade/"
-                            style={{ textDecoration: "none" }}
-                            className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
-                          >
-                            <i className="pi pi-chart-line mr-2"></i>
-                            <span className="font-medium">Upgrade</span>
-                            <Ripple />
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
+                    </li> */}
+                    
                     {/* <Divider /> */}
                     {/* <li>
                       <Link

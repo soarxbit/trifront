@@ -5,33 +5,23 @@ import axios from "axios";
 import { Message } from "primereact/message";
 import { Toast } from "primereact/toast";
 import { Button } from "primereact/button";
-import { Card } from "primereact/card";
 export const UserDashBoard = () => {
   const toast = useRef(null);
-  const initialized = useRef(false);
   const Navigate = useNavigate();
   const url = process.env.REACT_APP_HOST_ADDR;
   const apikey = process.env.REACT_APP_APIKEY;
   const [userdata, setUserData] = useState({});
-  const [number, setNumber] = useState(1);
-  const [userreward, setUserReward] = useState("NO REWARD");
   const _ranks = [
     "NO RANK",
+    "STAR",
+    "BRONZE",
     "SILVER",
     "GOLD",
     "PLATINUM",
+    "RUBI",
     "DIAMOND",
-    "CROWN DIAMOND",
-  ];
-  const pair = [
-    "BTCUSD",
-    "ETHUSDT",
-    "BNBUSDT",
-    "SOLUSDT",
-    "TRXUSD",
-    "XRPUSD",
-    "AAVEUSDT",
-    "ADAUSDT",
+    "KOHINOOR",
+    "AMBASSADOR",
   ];
   var _reward = [
     "NO REWARD",
@@ -50,13 +40,23 @@ export const UserDashBoard = () => {
     "REWARD-13",
     "REWARD-14",
   ];
-  const globalMessage = () =>{
-    toast.current.show({
-      severity: "error",
-      summary: "Sorry",
-      detail: "Something Went wrong!!!",
-    });
-  }
+  var _salary = [
+    "NO REWARD",
+    "SALARY-1",
+    "SALARY-2",
+    "SALARY-3",
+    "SALARY-4",
+    "SALARY-5",
+    "SALARY-6",
+    "SALARY-7",
+    "SALARY-8",
+    "SALARY-9",
+    "SALARY-10",
+    "SALARY-11",
+    "SALARY-12",
+    "SALARY-13",
+    "SALARY-14",
+  ];
   useEffect(() => {
     const fetchData = async () => {
       if (window.ethereum) {
@@ -76,7 +76,6 @@ export const UserDashBoard = () => {
         if (resp.status === 200) {
           if (resp.data.userdata.is_active === 1) {
             setUserData(resp.data.userdata);
-            setUserReward(_reward[resp.data.userdata.reward]);
           } else {
             Navigate("/");
           }
@@ -94,13 +93,16 @@ export const UserDashBoard = () => {
     }, 1000);
   }, []);
   const checkRank = async () => {
-    return false;
     if (window.ethereum) {
       const adrs = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
       const wa = adrs[0];
-      const resp = await axios.post(url + "/user/checkrank", { wa });
+      const resp = await axios.post(url + "/user/checkrank", { wa },{
+        headers: {
+          "x-api-key": apikey,
+        },
+      });
       if (resp.status === 200) {
         toast.current.show({
           severity: "success",
@@ -152,6 +154,72 @@ export const UserDashBoard = () => {
       alert("Not Connected");
     }
   };
+  const checkSalary = async () => {
+    if (window.ethereum) {
+      const adrs = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      const wa = adrs[0];
+      const resp = await axios.post(
+        url + "/user/checksalary",
+        { wa },
+        {
+          headers: {
+            "x-api-key": apikey,
+          },
+        }
+      );
+      if (resp.status === 200) {
+        toast.current.show({
+          severity: "success",
+          summary: "Success",
+          detail: "Salary Updated Successfully.",
+        });
+        //setUserReward(_reward[resp.data.data]);
+      } else {
+        toast.current.show({
+          severity: "error",
+          summary: "Error",
+          detail: "You are not qualified for New Salary.",
+        });
+      }
+    } else {
+      alert("Not Connected");
+    }
+  };
+  const checkClub = async () => {
+    if (window.ethereum) {
+      const adrs = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      const wa = adrs[0];
+      const resp = await axios.post(
+        url + "/user/checkclub",
+        { wa },
+        {
+          headers: {
+            "x-api-key": apikey,
+          },
+        }
+      );
+      if (resp.status === 200) {
+        toast.current.show({
+          severity: "success",
+          summary: "Success",
+          detail: "Club Updated Successfully.",
+        });
+        //setUserReward(_reward[resp.data.data]);
+      } else {
+        toast.current.show({
+          severity: "error",
+          summary: "Error",
+          detail: "You are not qualified for New Club.",
+        });
+      }
+    } else {
+      alert("Not Connected");
+    }
+  };
   const copyText = (x) => {
     navigator.clipboard.writeText(x);
     toast.current.show({
@@ -178,30 +246,6 @@ export const UserDashBoard = () => {
           copyText(`https://triconix.io/signup/${userdata.memberid}`)
         }
       ></i>
-    </div>
-  );
-  const userdown = (
-    <div className="w-full flex align-items-center justify-content-between">
-      <div style={{ fontSize: "14px" }}>MY DIRECT</div>
-      <div>{userdata.mydown}</div>
-    </div>
-  );
-  const botfund = (
-    <div className="w-full flex align-items-center justify-content-between">
-      <div style={{ fontSize: "14px" }}>OWN FEE FUND</div>
-      <div>{userdata.botfund}</div>
-    </div>
-  );
-  const tradefund = (
-    <div className="w-full flex align-items-center justify-content-between">
-      <div style={{ fontSize: "14px" }}>TEAM FEE FUND</div>
-      <div>{(userdata.tradefund * 1).toFixed(3)}</div>
-    </div>
-  );
-  const myfund = (
-    <div className="w-full flex align-items-center justify-content-between">
-      <div style={{ fontSize: "14px" }}>MY INVEST</div>
-      <div>{userdata.myfund}</div>
     </div>
   );
   const teamfund = (
@@ -259,62 +303,85 @@ export const UserDashBoard = () => {
                   content={teamfund}
                 />
                 <div className="grid text-center">
-                  
                   <div className="col-6 md:col-6">
                     <div className="cont border-dotted border-round">
                       <div className="text-primary">Self Business</div>
                       <div>{userdata.myfund}</div>
-                      <Link to="/user/mybusiness"><Button
-                        label="Explore"
-                        severity="info"
-                        size="small"
-                      /></Link>
-                      
+                      <Link to="/user/mybusiness">
+                        <Button label="Explore" severity="info" size="small" />
+                      </Link>
                     </div>
                   </div>
                   <div className="col-6 md:col-6">
                     <div className="cont border-dotted border-round">
                       <div className="text-primary">My Direct</div>
                       <div>{userdata.mydown}</div>
-                      <Link to="/user/myteam"><Button
-                        label="Explore"
-                        size="small"
-                      /></Link>
+                      <Link to="/user/myteam">
+                        <Button label="Explore" size="small" />
+                      </Link>
                     </div>
                   </div>
                   <div className="col-6 md:col-6">
                     <div className="cont border-dotted border-round">
                       <div className="text-primary">Active Rank</div>
-                      <div>No Rank</div>
-                      <Link><Button
-                        icon="pi pi-check-circle"
-                        label="Check"
-                        size="small"
-                        onClick={()=>globalMessage()}
-                      /></Link>
-                      
+                      <div>{_ranks[userdata.rank]}</div>
+                      <Link>
+                        <Button
+                          icon="pi pi-check-circle"
+                          label="Check"
+                          size="small"
+                          onClick={() => checkRank()}
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="col-6 md:col-6">
+                    <div className="cont border-dotted border-round">
+                      <div className="text-primary">Active Reward</div>
+                      <div>{_reward[userdata.reward]}</div>
+                      <Link>
+                        <Button
+                          icon="pi pi-check-circle"
+                          label="Check"
+                          size="small"
+                          onClick={() => checkReward()}
+                        />
+                      </Link>
                     </div>
                   </div>
                   <div className="col-6 md:col-6">
                     <div className="cont border-dotted border-round">
                       <div className="text-primary">Active Salary</div>
-                      <div>No Salary</div>
-                      <Link><Button
-                        icon="pi pi-check-circle"
-                        severity="danger"
-                        label="Check"
-                        size="small"
-                        onClick={()=>globalMessage()}
-                      /></Link>
-                      
+                      <div>{_salary[userdata.salary]}</div>
+                      <Link>
+                        <Button
+                          icon="pi pi-check-circle"
+                          severity="danger"
+                          label="Check"
+                          size="small"
+                          onClick={() => checkSalary()}
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="col-6 md:col-6">
+                    <div className="cont border-dotted border-round">
+                      <div className="text-primary">Club Bonus</div>
+                      <div>No Club</div>
+                      <Link>
+                        <Button
+                          icon="pi pi-check-circle"
+                          label="Check"
+                          size="small"
+                          onClick={() => checkClub()}
+                        />
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-12 md:col-6 lg:col-6">
-              
-            </div>
+            <div className="col-12 md:col-6 lg:col-6"></div>
           </div>
         </div>
       </div>

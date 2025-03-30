@@ -6,7 +6,7 @@ import { ConfirmDialog } from "primereact/confirmdialog";
 import { Toast } from "primereact/toast";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
-export const MyBusiness = () => {
+export const MyLiveAccount = () => {
   const toast = useRef(null);
   const url = process.env.REACT_APP_HOST_ADDR;
   const apikey = process.env.REACT_APP_APIKEY;
@@ -20,7 +20,7 @@ export const MyBusiness = () => {
         });
         const wa = adrs[0];
         const resp = await axios.post(
-          url + "/user/fetchbusiness",
+          url + "/user/fetchmylives",
           {
             wa,
           },
@@ -46,7 +46,7 @@ export const MyBusiness = () => {
   const claimInvest = async (rowid) => {
     setBtnClaim(1);
     const resp = await axios.post(
-      url + "/user/claimInvest",
+      url + "/user/claimMyLiveInvest",
       {
         rowid,
       },
@@ -86,7 +86,7 @@ export const MyBusiness = () => {
       <div className="hero">
         <div className="content">
           <div className="border-2 border-dashed surface-border border-round surface-ground p-2">
-            MY TRADE FUND:
+            MY LIVE FUND:
           </div>
           <div className="grid">
             {rows.map((row, index) => (

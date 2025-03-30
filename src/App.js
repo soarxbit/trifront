@@ -20,6 +20,7 @@ import { LiveAccount } from "./pages/user/liveaccount/LiveAccount";
 import { MyBusiness } from "./pages/user/mybusiness/MyBusiness";
 import { IncomeDetails } from "./pages/user/incomedetails/IncomeDetails";
 import { MyTeam } from "./pages/user/myteam/MyTeam";
+import { MyLiveAccount } from "./pages/user/myliveaccount/MyLiveAccount";
 function App() {
   const HomeLayout = () => {
     return (
@@ -67,6 +68,7 @@ function App() {
         { path: "/user/", element: <UserDashBoard /> },
         { path: "/user/liveaccount", element: <LiveAccount /> },
         { path: "/user/mybusiness", element: <MyBusiness /> },
+        { path: "/user/myliveaccount", element: <MyLiveAccount /> },
         { path: "/user/incomedetails", element: <IncomeDetails /> },
         { path: "/user/myteam", element: <MyTeam /> },
         // { path: "/user/liveaccountnew", element: <LiveAccountNew /> },

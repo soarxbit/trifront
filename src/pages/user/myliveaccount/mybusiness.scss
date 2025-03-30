@@ -1,0 +1,57 @@
+.mybusiness {
+  padding: 60px 5px;
+  background: linear-gradient(
+          180deg,
+          #66ead093,
+          rgba(177, 252, 225, 0) 100%
+        ),
+        url("../../../images/hero_bg.png");
+  .hero {
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 30px;
+      .data {
+        .p-card-body {
+          padding: 3px;
+          background: #03fbc9;
+          border-radius: 5px;
+          .p-card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            div {
+              display: flex;
+              justify-content: space-between;
+            }
+            .details {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+            }
+            .buttons {
+              border: 1px dashed #62656493;
+              padding: 5px;
+              border-radius: 8px;
+            }
+          }
+        }
+      }
+    }
+    $breakpoint-tablet: 900.1px;
+    @media (max-width: $breakpoint-tablet) {
+      padding: 5px;
+      .content {
+        padding: 10px 5px;
+        border-radius: 10px;
+        .data {
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
