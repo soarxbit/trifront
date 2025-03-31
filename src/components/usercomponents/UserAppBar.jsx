@@ -192,7 +192,7 @@ export const UserAppBar = () => {
                         </li>
                         <li>
                           <a
-                            href="/user/myliveaccount/"
+                            href="/user/liveaccount/"
                             style={{ textDecoration: "none" }}
                             className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
                           >
