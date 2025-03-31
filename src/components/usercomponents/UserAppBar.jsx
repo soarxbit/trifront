@@ -291,7 +291,7 @@ export const UserAppBar = () => {
                     </li>
                     <li>
                       <a
-                        href="/user/withdraw/"
+                        href="/user/"
                         style={{ textDecoration: "none" }}
                         className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
                       >
@@ -303,7 +303,7 @@ export const UserAppBar = () => {
 
                     <li>
                       <Link
-                        to="/user/settings/"
+                        to="/user/"
                         style={{ textDecoration: "none" }}
                         className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
                       >
