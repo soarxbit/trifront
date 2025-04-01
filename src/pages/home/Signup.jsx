@@ -56,9 +56,9 @@ export const Signup = () => {
   const formik = useFormik({
     initialValues: {
       tranhash:
-        "0xc779fa9232345f3f695b1a8747e3b5671d273b45321dc1174b8bae1d6b4cba36",
-      usdt: "50",
-      sponsorid: "100001",
+        "",
+      usdt: "",
+      sponsorid: "",
     },
     validationSchema,
     onSubmit: async (values) => {

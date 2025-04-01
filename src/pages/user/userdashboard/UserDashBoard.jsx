@@ -25,7 +25,7 @@ export const UserDashBoard = () => {
   ];
   var _reward = [
     "NO REWARD",
-    "REWARD-1",
+    "SMART WATCH",
     "REWARD-2",
     "REWARD-3",
     "REWARD-4",
@@ -356,7 +356,6 @@ export const UserDashBoard = () => {
                       <Link>
                         <Button
                           icon="pi pi-check-circle"
-                          severity="danger"
                           label="Check"
                           size="small"
                           onClick={() => checkSalary()}
