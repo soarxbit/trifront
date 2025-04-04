@@ -314,8 +314,8 @@ export const UserDashBoard = () => {
                   </div>
                   <div className="col-6 md:col-6">
                     <div className="cont border-dotted border-round">
-                      <div className="text-primary">My Direct</div>
-                      <div>{userdata.mydown}</div>
+                      <div className="text-primary">My Direct/Team</div>
+                      <div>{userdata.mydown + "/" + userdata.team_down}</div>
                       <Link to="/user/myteam">
                         <Button label="Explore" size="small" />
                       </Link>
