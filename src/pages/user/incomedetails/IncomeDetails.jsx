@@ -13,6 +13,7 @@ export const IncomeDetails = () => {
   const [withdraw, setWithdraw] = useState(0);
   const [levelIncome, setLevelIncome] = useState(0);
   const [monthRoiIncome, setMonthRoiIncome] = useState(0);
+  const [liveRoiIncome, setLiveRoiIncome] = useState(0);
   const [income, setIncome] = useState({
     FEE: 0,
     VM: 0,
@@ -48,6 +49,7 @@ export const IncomeDetails = () => {
           setWithdraw(resp.data.withdraw);
           setLevelIncome(resp.data.levelIncome)
           setMonthRoiIncome(resp.data.usrmonthlyamt)
+          setLiveRoiIncome(resp.data.userLiveamt)
           await updateData(resp.data.userIncomes);
         }
       }
@@ -115,7 +117,8 @@ export const IncomeDetails = () => {
                     income.MONTHLY +
                     income.MLEVEL +
                     income.CROWN +
-                    monthRoiIncome
+                    monthRoiIncome + 
+                    liveRoiIncome
                   ).toFixed(3)}
                 </div>
                 <Button
