@@ -23,6 +23,7 @@ import { MyTeam } from "./pages/user/myteam/MyTeam";
 import { MyLiveAccount } from "./pages/user/myliveaccount/MyLiveAccount";
 import { Withdraw } from "./pages/user/withdraw/Withdraw";
 import { AdmWithdraw } from "./pages/admin/admwithdraw/AdmWithdraw";
+import { AdmLiveAccountList } from "./pages/admin/liveaccountlist/AdmLiveAccountList";
 function App() {
   const HomeLayout = () => {
     return (
@@ -94,6 +95,7 @@ function App() {
       children:[
         {path:"/admin/", element:<AdmDashBoard />},
         { path: "/admin/liveaccountnew", element: <LiveAccountNew /> },
+        { path: "/admin/liveaccountlist", element: <AdmLiveAccountList /> },
         {path:"/admin/withdraw", element:<AdmWithdraw />},
         // {path:"/admin/claimback", element:<AdminClaimBack />},
         // {path:"/admin/changeaddress", element:<ChangeAddress />},

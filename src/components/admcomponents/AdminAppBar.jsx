@@ -12,28 +12,28 @@ import { PrimeReactContext } from "primereact/api";
 export const AdminAppBar = () => {
   const [visible, setVisible] = useState(false);
   const btnRef2 = useRef(null);
-    const [checked, setChecked] = useState(false);
-    const [darkMode, setDarkMode] = useState(
-      JSON.parse(localStorage.getItem("darkMode")) || false
-    );
-    const { changeTheme } = useContext(PrimeReactContext);
-    const changeMyTheme = () => {
-      let currentTheme = darkMode === false ? "soho-light" : "soho-dark"
-      let newTheme = darkMode === false ?  "soho-dark" : "soho-light"
-      changeTheme(currentTheme, newTheme, 'app-theme', function(){
-        setDarkMode(!darkMode);
-        setChecked(!darkMode);
-        localStorage.setItem("darkMode", !darkMode);
-      })
-    };
-    useEffect(()=>{
-      let currentTheme = darkMode === true ? "soho-light" : "soho-dark"
-      let newTheme = darkMode === true ?  "soho-dark" : "soho-light"
-      changeTheme(currentTheme, newTheme, 'app-theme', function(){
-        // setDarkMode(!darkMode);
-        // localStorage.setItem("darkMode", !darkMode);
-      })
-    },[darkMode, changeTheme])
+  const [checked, setChecked] = useState(false);
+  const [darkMode, setDarkMode] = useState(
+    JSON.parse(localStorage.getItem("darkMode")) || false
+  );
+  const { changeTheme } = useContext(PrimeReactContext);
+  const changeMyTheme = () => {
+    let currentTheme = darkMode === false ? "soho-light" : "soho-dark";
+    let newTheme = darkMode === false ? "soho-dark" : "soho-light";
+    changeTheme(currentTheme, newTheme, "app-theme", function () {
+      setDarkMode(!darkMode);
+      setChecked(!darkMode);
+      localStorage.setItem("darkMode", !darkMode);
+    });
+  };
+  useEffect(() => {
+    let currentTheme = darkMode === true ? "soho-light" : "soho-dark";
+    let newTheme = darkMode === true ? "soho-dark" : "soho-light";
+    changeTheme(currentTheme, newTheme, "app-theme", function () {
+      // setDarkMode(!darkMode);
+      // localStorage.setItem("darkMode", !darkMode);
+    });
+  }, [darkMode, changeTheme]);
   return (
     <>
       <div className="homeappbar surface-ground">
@@ -41,7 +41,7 @@ export const AdminAppBar = () => {
           <Link to="/admin/" style={{ textDecoration: "none", color: "#FFF" }}>
             <div className="brand">
               <img src={window.location.origin + "/images/tlogo.webp"} alt="" />
-              <div className="title">TRICONIX</div>
+              <div className="title text-primary">TRICONIX</div>
             </div>
           </Link>
           <div className="menu">
@@ -186,7 +186,8 @@ export const AdminAppBar = () => {
                         leaveToClassName="hidden"
                         leaveActiveClassName="slideup"
                       >
-                        <Link
+                        <a
+                        href="#ajv"
                           style={{ textDecoration: "none" }}
                           ref={btnRef2}
                           className="p-ripple bg-yellow-800 flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
@@ -195,7 +196,7 @@ export const AdminAppBar = () => {
                           <span className="font-medium">Live Account</span>
                           <i className="pi pi-chevron-down ml-auto mr-1"></i>
                           <Ripple />
-                        </Link>
+                        </a>
                       </StyleClass>
                       <ul className="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
                         <li>
@@ -211,7 +212,7 @@ export const AdminAppBar = () => {
                         </li>
                         <li>
                           <a
-                            href="/user/upgrade/"
+                            href="/admin/liveaccountlist/"
                             style={{ textDecoration: "none" }}
                             className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
                           >
