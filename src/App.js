@@ -21,6 +21,7 @@ import { MyBusiness } from "./pages/user/mybusiness/MyBusiness";
 import { IncomeDetails } from "./pages/user/incomedetails/IncomeDetails";
 import { MyTeam } from "./pages/user/myteam/MyTeam";
 import { MyLiveAccount } from "./pages/user/myliveaccount/MyLiveAccount";
+import { Withdraw } from "./pages/user/withdraw/Withdraw";
 function App() {
   const HomeLayout = () => {
     return (
@@ -71,13 +72,14 @@ function App() {
         { path: "/user/myliveaccount", element: <MyLiveAccount /> },
         { path: "/user/incomedetails", element: <IncomeDetails /> },
         { path: "/user/myteam", element: <MyTeam /> },
+        { path: "/user/withdraw", element: <Withdraw /> },
         // { path: "/user/liveaccountnew", element: <LiveAccountNew /> },
         // { path: "/user/myteam", element: <MyTeam /> },
         // { path: "/user/intronew", element: <IntroNew /> },
         // { path: "/user/upgrade", element: <Upgrade /> },
         // { path: "/user/messages", element: <Message /> },
         
-        // { path: "/user/withdraw", element: <Withdraw /> },
+        
         // { path: "/user/settings", element: <Settings /> },
         // { path: "/user/incomes/:inctype", element: <Incomes /> },
         // { path: "/login", element: <Login /> },
