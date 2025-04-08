@@ -26,7 +26,7 @@ export const AdmWithdraw = () => {
     fetchData();
   }, []);
   const custDate = (data) => {
-    return <>{DateTime.fromISO(data.tran_date).toFormat("yyyy-mm-dd")}</>;
+    return <>{DateTime.fromISO(data.tran_date).toFormat("yyyy-LL-dd")}</>;
   };
   const copyText = (x) => {
     navigator.clipboard.writeText(x);
@@ -61,7 +61,7 @@ export const AdmWithdraw = () => {
     return <><Button label="Paid" size="small" onClick={()=>paidConfirm(data._id)} /></>;
   };
   const payusdt = (data) => {
-    return <>{(data.usdt_val - data.usdt_val*5/100).toFixed(3)}</>;
+    return <>{(data.usdt_val - data.usdt_val*10/100).toFixed(3)}</>;
   };
   return (
     <div className="adminwithdraw">

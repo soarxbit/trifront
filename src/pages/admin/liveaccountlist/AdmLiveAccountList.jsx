@@ -43,17 +43,21 @@ export const AdmLiveAccountList = () => {
       window.location.reload(true)
     }
   }
-  const approve = (data) => {
-    return (
-      <>
-        <Button label="Approve" onClick={()=>approveTran(data._id)} />
-      </>
-    );
-  };
+  const confirmWithdraw = async (id)=>{
+    alert(id)
+    const resp = await axios.post(url + "/admin/withdrawliveaccount",{id}, {
+        headers: {
+          "x-api-key": apikey,
+        },
+      });
+      if (resp.status === 200) {
+        window.location.reload(true)
+      }
+  }
   const reject = (data) => {
     return (
       <>
-        <Button label="Reject" severity="danger" />
+        <Button label="Withdraw" severity="danger" size="small" onClick={()=>confirmWithdraw(data._id)} />
       </>
     );
   };
@@ -102,8 +106,8 @@ export const AdmLiveAccountList = () => {
                 <Column body={mtserver} header="Server"></Column>
                 <Column body={custDate1} header="Date"></Column>
                 <Column field="investamt" header="Amount"></Column>
-                {/* <Column body={approve} header="Approve"></Column>
-                <Column body={reject} header="Reject"></Column> */}
+                {/* <Column body={approve} header="Approve"></Column> */}
+                <Column body={reject} header="Withdraw"></Column>
               </DataTable>
                 </Card>
               

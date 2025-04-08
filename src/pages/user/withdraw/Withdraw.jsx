@@ -109,6 +109,9 @@ export const Withdraw = () => {
   const withstatus = (data) => {
     return <>{data.is_conf === 0 ? "Processing..." : "Confirmed"}</>;
   };
+  const payusdt = (data) => {
+    return <>{(data.usdt_val - data.usdt_val*10/100).toFixed(3)}</>;
+  };
   return (
     <div className="withdraw">
       <Toast ref={toast} position="top-right" />
@@ -177,6 +180,7 @@ export const Withdraw = () => {
           <DataTable value={withlist}>
             <Column body={custDate} header="Date"></Column>
             <Column field="usdt_val" header="Amount"></Column>
+            <Column body={payusdt} header="Amount"></Column>
             <Column body={withstatus} header="Status"></Column>
           </DataTable>
         </div>
