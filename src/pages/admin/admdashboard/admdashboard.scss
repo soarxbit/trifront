@@ -3,4 +3,14 @@
   background: linear-gradient(180deg, #66ead093, rgba(177, 252, 225, 0) 100%),
     url("../../../images/hero_bg.png");
     min-height: 100vh;
+    .form-group{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      .component{
+        display: flex;
+        flex-direction: column;
+        
+      }
+    }
 }

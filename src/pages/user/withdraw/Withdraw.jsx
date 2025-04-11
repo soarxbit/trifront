@@ -17,6 +17,7 @@ export const Withdraw = () => {
   const apikey = process.env.REACT_APP_APIKEY;
   const [isButtonDisabled, setButtonDisabled] = useState(0);
   const [balance, setBalance] = useState(0);
+  const [allowwithdraw, setAllowWithdraw] = useState(0);
   const [address, setAddress] = useState("");
   const [withlist, setWithList] = useState([]);
     useEffect(() => {
@@ -39,6 +40,7 @@ export const Withdraw = () => {
           if (resp.status === 200) {
             setBalance((resp.data.balance*1).toFixed(4));
             setWithList(resp.data.withlist);
+            setAllowWithdraw(resp.data.allowwithdraw)
           }
         } else {
           alert("0");
@@ -161,6 +163,10 @@ export const Withdraw = () => {
                       {getFormErrorMessage("usdt")}
                     </div>
                     <div className="component">
+                      {allowwithdraw===0?
+                      <Button type="button" label="Confirm" size="small" disabled />
+                      :
+                      <>
                       {isButtonDisabled === 0 ? (
                         <Button type="submit" label="Confirm" size="small" />
                       ) : (
@@ -170,6 +176,9 @@ export const Withdraw = () => {
                           size="small"
                         />
                       )}
+                      </>
+                      }
+                      
                     </div>
                   </div>
                 </Form>

@@ -43,9 +43,8 @@ export const AdmLiveAccountList = () => {
       window.location.reload(true)
     }
   }
-  const confirmWithdraw = async (id)=>{
-    alert(id)
-    const resp = await axios.post(url + "/admin/withdrawliveaccount",{id}, {
+  const confirmWithdraw = async (ulaid, ulid)=>{
+    const resp = await axios.post(url + "/admin/withdrawliveaccount",{ulaid, ulid}, {
         headers: {
           "x-api-key": apikey,
         },
@@ -57,7 +56,7 @@ export const AdmLiveAccountList = () => {
   const reject = (data) => {
     return (
       <>
-        <Button label="Withdraw" severity="danger" size="small" onClick={()=>confirmWithdraw(data._id)} />
+        <Button label="Withdraw" severity="danger" size="small" onClick={()=>confirmWithdraw(data._id, data.authorDetails._id)} />
       </>
     );
   };
