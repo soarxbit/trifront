@@ -102,6 +102,17 @@ export const AdminAppBar = () => {
                     </li>
                     <li>
                       <a
+                        href="/admin/userslist/"
+                        style={{ textDecoration: "none" }}
+                        className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                      >
+                        <i className="pi pi-bookmark mr-2"></i>
+                        <span className="font-medium">Users</span>
+                        <Ripple />
+                      </a>
+                    </li>
+                    <li>
+                      <a
                         href="/admin/withdraw/"
                         style={{ textDecoration: "none" }}
                         className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"

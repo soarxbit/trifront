@@ -1,26 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./admwithdraw.scss";
+// import "./admwithdraw.scss"
 import axios from "axios";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { DateTime } from "luxon";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
-export const AdmWithdraw = () => {
-  const toast = useRef(null);
+export const UserList = () => {
+    const toast = useRef(null);
   const url = process.env.REACT_APP_HOST_ADDR;
   const apikey = process.env.REACT_APP_APIKEY;
   const [withlist, setWithList] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const resp = await axios.get(url + "/admin/fetchwithdraw", {
+      const resp = await axios.get(url + "/admin/fetchusers", {
         headers: {
           "x-api-key": apikey,
         },
       });
       if (resp.status === 200) {
         //   setBalance(resp.data.balance);
-        setWithList(resp.data.withdraws);
+        setWithList(resp.data.users);
       }
     };
     fetchData();
@@ -79,19 +79,25 @@ export const AdmWithdraw = () => {
     return <>{(data.usdt_val - (data.usdt_val * 10) / 100).toFixed(3)}</>;
   };
   return (
-    <div className="adminwithdraw">
-      <Toast ref={toast} position="top-right" />
-      <div className="hero">
-        <div className="content">
-          <DataTable value={withlist}>
-            <Column body={custDate} header="Date"></Column>
-            <Column body={custAdd} header="Mem Address"></Column>
-            <Column field="usdt_val" header="Amount"></Column>
-            <Column body={payusdt} header="Amount"></Column>
-            <Column body={withstatus} header="Action"></Column>
-          </DataTable>
+    <div className="userlist" style={{paddingTop:"80px", paddingBottom:"80px", paddingLeft:"5px", paddingRight:"5ps"}}>
+          <Toast ref={toast} position="top-right" />
+          <div className="hero">
+            <div className="content">
+              <DataTable value={withlist}>
+                <Column body={custDate} header="Date"></Column>
+                <Column field="memberid" header="MemId"></Column>
+                <Column body={custAdd} header="Mem Address"></Column>
+                <Column field="mydown" header="Dowm"></Column>
+                <Column field="join_under_id" header="Join Under"></Column>
+                <Column field="myfund" header="Own Fund"></Column>
+                <Column field="teamfund" header="Team Fund"></Column>
+                {/* <Column body={custAdd} header="Mem Address"></Column>
+                <Column field="usdt_val" header="Amount"></Column>
+                <Column body={payusdt} header="Amount"></Column>
+                <Column body={withstatus} header="Action"></Column> */}
+              </DataTable>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  );
-};
+  )
+}

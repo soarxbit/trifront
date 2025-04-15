@@ -15,7 +15,7 @@ export const Home = () => {
           />
           <h3 className="m-0 p-0">WELCOME TO</h3>
           <h1 className="m-0 p-0 text-primary text-7xl">TRICONIX</h1>
-          <p>Artificial Inteligence Based Robotic Trading platform</p>
+          <p>Artificial Inteligence Based Trading platform</p>
         </div>
         <div className="quick flex gap-3 align-items-center w-full justify-content-center">
           <Link to="/signup">
@@ -34,9 +34,9 @@ export const Home = () => {
           <div className="col-12 md:col-6 lg:col-6">
             <Card className="moduleitem">
               <div className="left">
-                <div className="text-primary text-2xl">Mobile Payment Make Easy</div>
+                <div className="text-primary text-2xl">Crypto Payment Make Easy</div>
                 <div className="msg">
-                  Add new trending and rare artwork to your collection.
+                  We cover all Digital asset Managment.
                 </div>
               </div>
               <div className="right">
@@ -50,9 +50,9 @@ export const Home = () => {
           <div className="col-12 md:col-6 lg:col-6">
             <Card className="moduleitem">
               <div className="left">
-                <div className="text-primary text-2xl">Mobile Payment Make Easy</div>
+                <div className="text-primary text-2xl">Asset Mangment</div>
                 <div className="msg">
-                  Add new trending and rare artwork to your collection.
+                  We manage your asset secure level.
                 </div>
               </div>
               <div className="right">
@@ -69,9 +69,9 @@ export const Home = () => {
             <Card>
               <div className="moduleitem">
                 <div className="left">
-                  <div className="text-primary text-2xl">Mobile Payment Make Easy</div>
+                  <div className="text-primary text-2xl">Security Measure</div>
                   <div className="msg">
-                    Add new trending and rare artwork to your collection.
+                    Your assets are fully secure in our platform.
                   </div>
                 </div>
                 <div className="right">
@@ -86,9 +86,9 @@ export const Home = () => {
           <div className="col-12 md:col-6 lg:col-6">
             <Card className="moduleitem">
               <div className="left">
-                <div className="text-primary text-2xl">Mobile Payment Make Easy</div>
+                <div className="text-primary text-2xl">Easy Checkout</div>
                 <div className="msg">
-                  Add new trending and rare artwork to your collection.
+                  Withdraw of your asset relly on 21 blocks confirmation.
                 </div>
               </div>
               <div className="right">
