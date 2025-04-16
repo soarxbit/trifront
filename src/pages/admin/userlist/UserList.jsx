@@ -91,10 +91,6 @@ export const UserList = () => {
                 <Column field="join_under_id" header="Join Under"></Column>
                 <Column field="myfund" header="Own Fund"></Column>
                 <Column field="teamfund" header="Team Fund"></Column>
-                {/* <Column body={custAdd} header="Mem Address"></Column>
-                <Column field="usdt_val" header="Amount"></Column>
-                <Column body={payusdt} header="Amount"></Column>
-                <Column body={withstatus} header="Action"></Column> */}
               </DataTable>
             </div>
           </div>
