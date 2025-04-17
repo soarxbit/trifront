@@ -28,10 +28,10 @@ export const AdmLiveAccountList = () => {
     fetchData();
   }, []);
   const custDate = (data) => {
-    return <>{DateTime.fromISO(data.tran_date).toFormat("yyyy-mm-dd")}</>;
+    return <>{DateTime.fromISO(data.tran_date).toFormat("yyyy-LL-dd")}</>;
   };
   const custDate1 = (data) => {
-    return <>{DateTime.fromISO(data.investdate).toFormat("yyyy-mm-dd")}</>;
+    return <>{DateTime.fromISO(data.investdate).toFormat("yyyy-LL-dd")}</>;
   };
   const approveTran = async (_id) =>{
     const resp = await axios.post(url + "/admin/approveliveaccount",{_id}, {
