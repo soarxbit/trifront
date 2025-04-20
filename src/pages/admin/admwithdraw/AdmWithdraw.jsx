@@ -11,6 +11,7 @@ export const AdmWithdraw = () => {
   const url = process.env.REACT_APP_HOST_ADDR;
   const apikey = process.env.REACT_APP_APIKEY;
   const [withlist, setWithList] = useState([]);
+  const [total, setTotal] = useState(0)
   useEffect(() => {
     const fetchData = async () => {
       const resp = await axios.get(url + "/admin/fetchwithdraw", {
@@ -21,6 +22,7 @@ export const AdmWithdraw = () => {
       if (resp.status === 200) {
         //   setBalance(resp.data.balance);
         setWithList(resp.data.withdraws);
+        setTotal(resp.data.total)
       }
     };
     fetchData();
@@ -83,6 +85,7 @@ export const AdmWithdraw = () => {
       <Toast ref={toast} position="top-right" />
       <div className="hero">
         <div className="content">
+          <div className="p-2 bg-primary">Total Withdraw: {total}</div>
           <DataTable value={withlist}>
             <Column body={custDate} header="Date"></Column>
             <Column body={custAdd} header="Mem Address"></Column>
