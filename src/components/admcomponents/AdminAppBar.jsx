@@ -12,6 +12,7 @@ import { PrimeReactContext } from "primereact/api";
 export const AdminAppBar = () => {
   const [visible, setVisible] = useState(false);
   const btnRef2 = useRef(null);
+  const btnRef3 = useRef(null);
   const [checked, setChecked] = useState(false);
   const [darkMode, setDarkMode] = useState(
     JSON.parse(localStorage.getItem("darkMode")) || false
@@ -112,6 +113,52 @@ export const AdminAppBar = () => {
                       </a>
                     </li>
                     <li>
+                      <StyleClass
+                        nodeRef={btnRef3}
+                        selector="@next"
+                        enterFromClassName="hidden"
+                        enterActiveClassName="slidedown"
+                        leaveToClassName="hidden"
+                        leaveActiveClassName="slideup"
+                      >
+                        <a
+                          href="#ajv"
+                          style={{ textDecoration: "none" }}
+                          ref={btnRef3}
+                          className="p-ripple bg-yellow-800 flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                        >
+                          <i className="pi pi-chart-line mr-2"></i>
+                          <span className="font-medium">Withdraw</span>
+                          <i className="pi pi-chevron-down ml-auto mr-1"></i>
+                          <Ripple />
+                        </a>
+                      </StyleClass>
+                      <ul className="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
+                        <li>
+                          <a
+                            href="/admin/withdraw/"
+                            style={{ textDecoration: "none" }}
+                            className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          >
+                            <i className="pi pi-chart-line mr-2"></i>
+                            <span className="font-medium">Withdraw</span>
+                            <Ripple />
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="/admin/withdrawlist/"
+                            style={{ textDecoration: "none" }}
+                            className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                          >
+                            <i className="pi pi-chart-line mr-2"></i>
+                            <span className="font-medium">Withdraw List</span>
+                            <Ripple />
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    {/* <li>
                       <a
                         href="/admin/withdraw/"
                         style={{ textDecoration: "none" }}
@@ -121,7 +168,7 @@ export const AdminAppBar = () => {
                         <span className="font-medium">Withdraws</span>
                         <Ripple />
                       </a>
-                    </li>
+                    </li> */}
                     <li>
                       <a
                         href="/admin/claimback/"
@@ -198,7 +245,7 @@ export const AdminAppBar = () => {
                         leaveActiveClassName="slideup"
                       >
                         <a
-                        href="#ajv"
+                          href="#ajv"
                           style={{ textDecoration: "none" }}
                           ref={btnRef2}
                           className="p-ripple bg-yellow-800 flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
