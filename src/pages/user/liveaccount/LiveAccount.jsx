@@ -10,10 +10,17 @@ import { Toast } from "primereact/toast";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Card } from "primereact/card";
+import { Dropdown } from "primereact/dropdown";
 export const LiveAccount = () => {
   const toast = useRef(null);
   const url = process.env.REACT_APP_HOST_ADDR;
   const apikey = process.env.REACT_APP_APIKEY;
+  const [selectedCity, setSelectedCity] = useState('Hantec');
+  const cities = [
+    { name: "Hantec", value: "Hantec" },
+    { name: "Vantage", value: "Vantage" },
+    { name: "Startrader", value: "Startrader" },
+  ];
   const [isButtonDisabled, setButtonDisabled] = useState(0);
   const [livelist, setLiveList] = useState([]);
   useEffect(() => {
@@ -75,6 +82,7 @@ export const LiveAccount = () => {
           url + "/user/newliveaccount",
           {
             values,
+            selectedCity,
             wa,
           },
           {
@@ -143,7 +151,7 @@ export const LiveAccount = () => {
                           type="text"
                           name="username"
                           placeholder="User Name"
-                          className="p-inputtext-sm"
+                          className="p-inputtext-sm uppercase"
                           autoFocus
                           onChange={formik.handleChange}
                           value={formik.values.username}
@@ -163,12 +171,26 @@ export const LiveAccount = () => {
                         {getFormErrorMessage("mobile")}
                       </div>
                       <div className="component">
+                        <div>BROCKER HOUSE</div>
+                        <div className="card flex justify-content-center">
+                          <Dropdown
+                            value={selectedCity}
+                            onChange={(e) => setSelectedCity(e.value)}
+                            options={cities}
+                            optionLabel="name"
+                            placeholder="Select Broker House"
+                            className="w-full"
+                          />
+                        </div>
+                        {getFormErrorMessage("mobile")}
+                      </div>
+                      <div className="component">
                         <div>CLIENT PORTAL ID</div>
                         <InputText
                           type="text"
                           name="portalid"
                           placeholder="Portal Id"
-                          className="p-inputtext-sm"
+                          className="p-inputtext-sm lowercase"
                           onChange={formik.handleChange}
                           value={formik.values.portalid}
                         />
