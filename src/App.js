@@ -26,6 +26,7 @@ import { AdmWithdraw } from "./pages/admin/admwithdraw/AdmWithdraw";
 import { AdmLiveAccountList } from "./pages/admin/liveaccountlist/AdmLiveAccountList";
 import { UserList } from "./pages/admin/userlist/UserList";
 import { AdmWithdrawList } from "./pages/admin/admwithdrawlist/AdmWithdrawList";
+import { MyRealState } from "./pages/user/myrealstate/MyRealState";
 function App() {
   const HomeLayout = () => {
     return (
@@ -74,6 +75,7 @@ function App() {
         { path: "/user/liveaccount", element: <LiveAccount /> },
         { path: "/user/mybusiness", element: <MyBusiness /> },
         { path: "/user/myliveaccount", element: <MyLiveAccount /> },
+        { path: "/user/myrealstate", element: <MyRealState /> },
         { path: "/user/incomedetails", element: <IncomeDetails /> },
         { path: "/user/myteam", element: <MyTeam /> },
         { path: "/user/withdraw", element: <Withdraw /> },
