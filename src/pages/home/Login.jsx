@@ -17,7 +17,6 @@ export const Login = () => {
       });
       console.log(adrs)
       const wa = adrs[0];
-      console.log("WA DATA",wa)
       const resp = await axios.post(
         url + "/checkuser",
         { wa },
@@ -27,7 +26,6 @@ export const Login = () => {
           },
         }
       );
-      console.log("first", resp.status)
       if (resp.status === 200) {
         toast.current.show({
           severity: "success",
