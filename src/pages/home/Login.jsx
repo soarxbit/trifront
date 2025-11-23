@@ -15,6 +15,7 @@ export const Login = () => {
       const adrs = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
+      console.log(adrs)
       const wa = adrs[0];
       const resp = await axios.post(
         url + "/checkuser",
