@@ -186,11 +186,11 @@ export const MyRealState = () => {
                       </div>
 
                       <div className="component">
-                        <div>AADHAAR CARD</div>
+                        <div>AADHAAR Number</div>
                         <InputText
                           type="text"
                           name="aadhaar"
-                          placeholder="Aadhar Card"
+                          placeholder="Aadhar Number"
                           className="p-inputtext-sm"
                           onChange={formik.handleChange}
                           value={formik.values.aadhaar}
@@ -198,16 +198,29 @@ export const MyRealState = () => {
                         {getFormErrorMessage("aadhaar")}
                       </div>
                       <div className="component">
-                        <div>VOTER CARD</div>
+                        <div>VOTER Number</div>
                         <InputText
                           type="text"
                           name="voter"
-                          placeholder="Voter Card"
+                          placeholder="Voter Number"
                           className="p-inputtext-sm uppercase"
                           onChange={formik.handleChange}
                           value={formik.values.voter}
                         />
                         {getFormErrorMessage("voter")}
+                      </div>
+                      <div className="component">
+                        <div>Process Type</div>
+                        <div className="card flex justify-content-center">
+                          <Dropdown
+                            value={selectedCity}
+                            onChange={(e) => setSelectedCity(e.value)}
+                            options={cities}
+                            optionLabel="name"
+                            placeholder="Process Type"
+                            className="w-full"
+                          />
+                        </div>
                       </div>
                       <div className="component">
                         <div>Location</div>
